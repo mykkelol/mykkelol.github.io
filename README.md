@@ -19,6 +19,14 @@
     </a>
 </p>
 
+#### Next Update -- priority 1(immediate), 2(not immediate)
+    - (1) Thumbnail bug
+    - (1) Rearrange text of About (looks like a wall currently)
+    - (1) Grammatical errors and missing pronouns of About
+    - (1) Rearrange content of Contact (looks messy and out of place)
+    - (1) Enlarge divs of intro in mobile and tablet mode
+    - (2) Complete RESTful Routing Blog
+
 #### Added startBootstrap
     - One Scrolling Naviagation
 #### Forked
@@ -33,10 +41,3 @@
     - All images from unsplash/flickr
 #### License
     - MIT
-#### Next Update -- priority 1(immediate), 2(not immediate)
-    - (1) Thumbnail bug
-    - (1) Rearrange text of About (looks like a wall currently)
-    - (1) Grammatical errors and missing pronouns of About
-    - (1) Rearrange content of Contact (looks messy and out of place)
-    - (1) Enlarge divs of intro in mobile and tablet mode
-    - (2) Complete RESTful Routing Blog
