@@ -393,11 +393,32 @@ p {
     width: 100%;
 }
 
-#map {
-    margin: 30px auto;
-    padding: 0;
-    height: 500px;
-    max-width: 350px;
-    width: 100%;
-    border-radius: 8px;
+/*#map {*/
+/*    margin: 30px auto;*/
+/*    padding: 0;*/
+/*    height: 500px;*/
+/*    max-width: 350px;*/
+/*    width: 100%;*/
+/*    border-radius: 8px;*/
+/*}*/
+
+#foot-header {
+    padding-top: 10px;
+}
+
+#foot-body {
+    padding: 0 5px 10px 5px;
+    text-align: center;
+}
+
+#foot-body p {
+    margin: 0;
+}
+
+.fa-heart {
+    color: #be1931;
+}
+
+footer span {
+    font-weight: 700;
 }

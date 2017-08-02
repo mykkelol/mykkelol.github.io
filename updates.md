@@ -1,4 +1,8 @@
-#### v1.0
+#### v1.0.2
+    - Add footer
+    - Rearrange content of contact (looks messy and out of place)
+
+#### v1.0.1
     - Thumbnail bug (height)
     - Navbar bug (sizing in mobile/tablet devices)
     - Rearrange text of About (looks like a wall currently)

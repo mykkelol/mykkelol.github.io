@@ -20,13 +20,8 @@
 </p>
 
 #### Next Update -- priority 1(immediate), 2(not immediate)
-    - (1) Thumbnail bug (height)
-    - (1) Navbar bug (sizing in mobile/tablet devices)
-    - (1) Rearrange text of About (looks like a wall currently)
-    - (1) Rearrange content of Contact (looks messy and out of place)
-    - (1) Enlarge divs of intro in mobile and tablet mode
-    - (1) Grammatical errors and missing pronouns of About
-    - (2) Complete RESTful Routing Blog
+    - (1) Complete RESTful Routing Blog
+    - SEE ALL UPDATES IN: /updates.md
 
 #### Added startBootstrap
     - One Scrolling Naviagation
