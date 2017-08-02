@@ -33,6 +33,9 @@
     - All images from unsplash/flickr
 #### License
     - MIT
-#### Next Update
-    - Thumbnail bug
-    - RESTful Routing Blog
+#### Next Update -- priority 1(immediate), 2(not immediate)
+    - <strong>(1)<strong> Thumbnail bug
+    - <strong>(1)<strong> Rearrange text of About (looks like a wall currently)
+    - <strong>(1)<strong> Rearrange content of Contact (looks messy and out of place)
+    - <strong>(1)<strong> Enlarge divs of intro in mobile and tablet mode
+    - <strong>(2)<strong> Complete RESTful Routing Blog
