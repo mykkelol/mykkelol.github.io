@@ -34,8 +34,8 @@
 #### License
     - MIT
 #### Next Update -- priority 1(immediate), 2(not immediate)
-    - <strong>(1)<strong> Thumbnail bug
-    - <strong>(1)<strong> Rearrange text of About (looks like a wall currently)
-    - <strong>(1)<strong> Rearrange content of Contact (looks messy and out of place)
-    - <strong>(1)<strong> Enlarge divs of intro in mobile and tablet mode
-    - <strong>(2)<strong> Complete RESTful Routing Blog
+    - (1) Thumbnail bug
+    - (1) Rearrange text of About (looks like a wall currently)
+    - (1) Rearrange content of Contact (looks messy and out of place)
+    - (1) Enlarge divs of intro in mobile and tablet mode
+    - (2) Complete RESTful Routing Blog
