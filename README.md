@@ -20,7 +20,9 @@
 </p>
 
 #### Next Update -- priority 1(immediate), 2(not immediate)
-    - (1) Complete RESTful Routing Blog
+    - (1) Instead of columns seperation, rows seperation for About
+    - (1) Set jQuery for Contact POST routing
+    - (2) Complete RESTful Routing Blog
     - SEE ALL UPDATES IN: /updates.md
 
 #### Added startBootstrap

@@ -42,8 +42,8 @@ h1, h2, h4 {
     font-size: 2em !important;
 }
 
-.aboutParagraphs-body{
-    width: 800px;
+.easyWidth {
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -69,16 +69,17 @@ h1, h2, h4 {
 
 .taglineBody {
     font-weight: 700;
-    font-size: 140%;
-    letter-spacing: -1.2px;
+    font-size: 1.55em;
+    color: black;
+    letter-spacing: -.5px;
     text-transform: uppercase;
-    font-style: italic;
+    margin-bottom: 20px !important;
 }
 
 .change-world {
-    font-family: 'Permanent Marker', cursive;
-    font-size: 1.5em;
-    color: #3d79ba;
+    font-size: 1.2em;
+    color: black;
+    font-weight: 700;
 }
 
 body {
@@ -175,6 +176,23 @@ p {
     -webkit-margin-end: 0px
 }
 
+@media (min-width: 2560px) {
+body {
+        font-size: 18px !important;
+        line-height: 26px !important
+    }
+    h1 {
+        font-size: 22px !important;
+        line-height: 24px !important
+    }
+    .projects-section {
+        height: auto;
+    }
+    #thumb-container {
+        margin: auto;
+    }
+}
+
 @media (min-width: 1920px) {
     body {
         font-size: 18px !important;
@@ -183,6 +201,20 @@ p {
     h1 {
         font-size: 22px !important;
         line-height: 24px !important
+    }
+    .projects-section {
+        height: 100%;
+    }
+    #h1Project {
+        margin-top: 50px;
+        margin-bottom: 70px;
+    }
+    .contact-section {
+        min-height: 80%;
+    }
+    .contact-section h1 {
+        margin-top: 20px;
+        margin-bottom: 90px;
     }
 }
 
@@ -218,6 +250,14 @@ p {
         width: 50%;
     }
     
+}
+
+@media (min-width: 867px) {
+    .easyWidth {
+        width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 944px) {
@@ -256,13 +296,6 @@ p {
     }
     .thumb-project-container {
         width: 50%;
-    }
-    .contact-container {
-        margin: 0 auto;
-        padding: 0;
-        height: 500px;
-        max-width: 350px;
-        width: 100%;
     }
     .aboutParagraphs-body{
         width: 100%;
@@ -347,7 +380,7 @@ p {
 }
 
 #social-icons #social-container ul {
-    margin: 10px auto;
+    margin: 20px auto;
 }
 
 #social-icons #social-container ul li {
@@ -366,41 +399,6 @@ p {
     margin-bottom: 8px;
     margin-left: 5px;
 }
-
-#gBig {
-    height: 50px;
-    width: 50px;
-    opacity: .85;
-}
-
-.contact-container p {
-    margin-top: 10px;
-    margin-bottom: 0;
-}
-
-.contact-container {
-    margin: 30px auto;
-    padding: 0;
-    height: 500px;
-    max-width: 350px;
-    width: 100%;
-}
-
-#mjsContact {
-    border-radius: 8px;
-    max-width: 170px;
-    height: 300px;
-    width: 100%;
-}
-
-/*#map {*/
-/*    margin: 30px auto;*/
-/*    padding: 0;*/
-/*    height: 500px;*/
-/*    max-width: 350px;*/
-/*    width: 100%;*/
-/*    border-radius: 8px;*/
-/*}*/
 
 #foot-header {
     padding-top: 10px;
@@ -421,4 +419,77 @@ p {
 
 footer span {
     font-weight: 700;
+}
+
+.not-visible-message{
+    opacity: 0;
+  }
+
+  .visible-message{
+    height:auto;
+    opacity: 1;
+    margin:25px auto 0;
+  }
+
+  .form{
+    width: 100%;
+    padding: 15px;
+    background: #f8f8f8;
+    border:1px solid rgba(0, 0, 0, 0.075);
+    margin-bottom:25px;
+    color:#727272 !important;
+    font-size:13px;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+  }
+
+  .form:hover{
+    border:1px solid #afa7a7;
+  }
+
+  .form:focus{
+    color: white;
+    outline: none;
+    border:1px solid #afa7a7;
+  }
+
+  .textarea{
+    height: 220px;
+    max-height: 220px;
+    max-width: 100%;
+  }
+  
+  .form-btn{
+    width: 180px;
+    display: block;
+    height: auto;
+    padding: 15px;
+    color: black;
+    background: #f8f8f8;
+    border: 1px solid rgba(0, 0, 0, 0.075);
+    border-radius: 3px;
+    outline: none;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    margin: auto auto 15px auto;
+    box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+    -moz-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+    -webkit-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+  }
+
+  .form-btn:hover{
+    background: #8BC3A3;
+    color: white;
+    border: none;
+  }
+
+  .form-btn:active{
+    opacity: 0;
+  }
+
+input {
+    position: relative;
+    z-index: 9999;
 }
