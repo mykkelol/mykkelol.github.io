@@ -29,9 +29,16 @@
     <link rel="stylesheet" href="css/scrolling-nav.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     
+    <!-- PHP -->
+    <?php 
+        $contactFile = 'php/contact.php'
+        include($contactFile);
+    ?>
+    
      <!-- Modernizer -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript" async></script>
 </head>
+
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -258,12 +265,15 @@
                         In other words, if you're interested in collaborating or simply chat, don't hesitate to connect
                         <img id="smiley" src="image/profile/smiley.png">
                         </p>
+
+
+
                         <div class="inner contact">
                             <div class="contact-form">
-                                <form id="contact-us" method="post" action="#">
+                                <form method="post" action="php/contact.php">
                                     <div class="col-xs-6 wow animated slideInLeft" data-wow-delay=".5s">
                                         <input type="text" name="name" id="name" required="required" class="form" placeholder="Name" />
-                                        <input type="email" name="mail" id="mail" required="required" class="form" placeholder="Email" />
+                                        <input type="email" name="email" id="mail" required="required" class="form" placeholder="Email" />
                                         <input type="text" name="subject" id="subject" required="required" class="form" placeholder="Subject" />
                                     </div>
                                     <div class="col-xs-6 wow animated slideInRight" data-wow-delay=".5s">
@@ -277,13 +287,12 @@
                             </div><!-- End Contact Form Area -->
                         </div><!-- End Inner -->
 
-                    <div class="mail-message-area">
+                    <!--<div class="mail-message-area">-->
                         <!-- Message -->
-                        <div class="alert gray-bg mail-message not-visible-message">
-                            <strong>Thank You !</strong> Your email has been delivered.
-                        </div>
-                    </div>
-
+                    <!--    <div class="alert gray-bg mail-message not-visible-message">-->
+                    <!--        <strong>Thank You !</strong> Your email has been delivered.-->
+                    <!--    </div>-->
+                    <!--</div>-->
 
 
                     </div>
