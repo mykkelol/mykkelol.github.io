@@ -60,17 +60,19 @@ h1, h2, h4 {
 #brand {
     font-weight: 700;
     font-size: 30px;
+    color: black !important;
 }
 
 .tagline {    
     font-size: 75%;
     letter-spacing: 4.5px;
+    color: black !important;
 }
 
 .taglineBody {
     font-weight: 700;
     font-size: 1.55em;
-    color: black;
+    color: #777;
     letter-spacing: -.5px;
     text-transform: uppercase;
     margin-bottom: 20px !important;
@@ -78,7 +80,7 @@ h1, h2, h4 {
 
 .change-world {
     font-size: 1.2em;
-    color: black;
+    color: #777;
     font-weight: 700;
 }
 
