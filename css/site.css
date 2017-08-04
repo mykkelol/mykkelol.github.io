@@ -403,12 +403,13 @@ body {
 }
 
 #foot-header {
-    padding-top: 10px;
+    border: 2px solid #f8f8f8;
 }
 
 #foot-body {
-    padding: 0 5px 10px 5px;
+    padding: 5px 5px 5px 5px;
     text-align: center;
+    background-color: #eee;
 }
 
 #foot-body p {
@@ -494,4 +495,12 @@ footer span {
 input {
     position: relative;
     z-index: 9999;
+}
+
+.arrow {
+    text-align: center;
+}
+
+.arrow a {
+    text-decoration: none !important;
 }

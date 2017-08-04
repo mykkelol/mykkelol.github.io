@@ -4485,9 +4485,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
   .navbar-right {
     float: right !important;
-    margin-right: -15px;
-      display: flex;
-  align-items: center;
+    margin-right: 25px;
+    display: flex;
+    align-items: center;
   }
   .navbar-right ~ .navbar-right {
     margin-right: 0;
@@ -4510,12 +4510,18 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default .navbar-nav > li > a {
   color: black;
+  height: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
   color: black;
-  background-color: transparent;
+  background-color: #e7e7e7;
   font-weight: 700;
+  align-items: center;
+  display: flex;
+  height: 60px;
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
