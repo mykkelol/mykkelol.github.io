@@ -4514,20 +4514,28 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-.navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus {
+.navbar-default .navbar-nav > li > a:hover {
   color: black;
-  background-color: #e7e7e7;
+  background-color: #eee;
   font-weight: 700;
   align-items: center;
   display: flex;
   height: 60px;
 }
+
+.navbar-default .navbar-nav > li > a:focus {
+  color: black;
+  background-color: transparent;
+  align-items: center;
+  display: flex;
+  height: 60px;
+}
+
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
   color: black;
-  background-color: #e7e7e7;
+  background-color: #eee;
   height: 60px;
   display: flex;
   align-items: center;
