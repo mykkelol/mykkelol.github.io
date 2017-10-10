@@ -42,19 +42,38 @@ h1, h2, h4 {
     font-size: 2em !important;
 }
 
-.easyWidth {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+.about-images {
+    max-height: 100%;
+    max-width: 100%;
+    box-shadow: 15px 15px 25px 0 rgba(46,61,73,0.2);
 }
 
-.aboutParagraphs {
-    text-align: left;
-    display: inline-block;
-    vertical-align: top;
-    width: 45%;
-    padding: 0;
-    margin: 0 1.0%;
+
+.fa.fa-circle {
+    color: #f5f5f5;
+    text-shadow: 5px 5px 25px rgba(46,61,73,0.2);
+}
+
+.fa.fa-usd {
+    color: #02b3e4;
+}
+
+.fa.fa-globe {
+    color: #ff5483;
+}
+
+.fa.fa-shield {
+    color: #a951ed;
+}
+
+.fa.fa-handshake-o {
+    color: #02ccba;
+}
+
+.about-card {
+    box-shadow: 5px 5px 25px 0px rgba(46,61,73,0.2);
+    padding: 30px 0px;
+    margin: 0 0 30px 0;
 }
 
 #brand {
@@ -69,19 +88,36 @@ h1, h2, h4 {
     color: black !important;
 }
 
-.taglineBody {
+.taglineAbout {
     font-weight: 700;
-    font-size: 1.55em;
-    color: #777;
+    font-size: 1.2em;
+    color: black;
     letter-spacing: -.5px;
     text-transform: uppercase;
-    margin-bottom: 20px !important;
+    margin-top: 30px;
 }
 
 .change-world {
     font-size: 1.2em;
     color: #777;
     font-weight: 700;
+    margin-top: 300px !important;
+}
+
+.about-bank {
+    color: #02b3e4;
+}
+
+.about-ubi {
+    color: #ff5483;
+}
+
+.about-blockchain {
+    color: #a951ed;
+}
+
+.about-team {
+    color: #02ccba;
 }
 
 body {
@@ -299,17 +335,6 @@ body {
     .thumb-project-container {
         width: 50%;
     }
-    .aboutParagraphs-body{
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .aboutParagraphs {
-        text-align: left;
-        vertical-align: top;
-        width: 90%;
-        padding: 0;
-    }
     .intro-section {
         padding-top: 60px;
         min-height: 89%;
@@ -344,17 +369,6 @@ body {
     .thumb-project-container .thumb-overlay {
         margin: 0px
     }
-    .aboutParagraphs-body{
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .aboutParagraphs {
-        text-align: left;
-        vertical-align: top;
-        width: 90%;
-        padding: 0;
-    }
     .intro-section {
         padding-top: 60px;
         min-height: 89%;
@@ -382,7 +396,7 @@ body {
 }
 
 #social-icons #social-container ul {
-    margin: 20px auto;
+    margin: 20px 5%;
 }
 
 #social-icons #social-container ul li {
@@ -402,14 +416,10 @@ body {
     margin-left: 5px;
 }
 
-#foot-header {
-    border: 2px solid #f8f8f8;
-}
-
 #foot-body {
     padding: 5px 5px 5px 5px;
     text-align: center;
-    background-color: #eee;
+    background-color: #f5f5f5;
 }
 
 #foot-body p {
@@ -503,4 +513,51 @@ input {
 
 .arrow a {
     text-decoration: none !important;
+}
+
+#quote-carousel {
+    padding: 0 10px 30px 10px;
+    margin-top: 60px;
+}
+#quote-carousel .carousel-control {
+    background: none;
+    color: gray;
+    font-size: 2.3em;
+    text-shadow: none;
+    margin-top: 30px;
+}
+#quote-carousel .carousel-indicators {
+    position: relative;
+    right: 50%;
+    top: auto;
+    bottom: 0px;
+    margin-top: 20px;
+    margin-right: -19px;
+}
+#quote-carousel .carousel-indicators li {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    opacity: 0.4;
+    overflow: hidden;
+    transition: all .4s ease-in;
+    vertical-align: middle;
+}
+#quote-carousel .carousel-indicators .active {
+    width: 50px;
+    height: 50px;
+    opacity: 1;
+    transition: all .2s;
+}
+.item blockquote {
+    border-left: none;
+    margin: 0;
+}
+.item blockquote p:before {
+    content: "\f10d";
+    font-family: 'Fontawesome';
+    margin-right: 10px;
 }

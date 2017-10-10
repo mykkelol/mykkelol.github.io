@@ -43,3 +43,15 @@
             $(".new-intro").css("opacity", ".8");
         }
     );
+    
+// Testimonials Hover Effect
+    $("a#navTestimonials").hover(
+        function() {
+            $(".bg-nav-hover img").attr('src','image/hoverEffect/testimonials.jpg');
+            $(".new-intro").css("opacity", ".9");
+        }, function() {
+            $(".bg-nav-hover img").attr('src','image/hoverEffect/i_will_change_the_world.jpg'); 
+            $(".new-intro").css("opacity", ".8");
+        }
+    );
+
