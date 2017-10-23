@@ -1,0 +1,36 @@
+.warning-alert {
+    background-color: yellow;
+    padding: 10px !important;
+    color: red !important;
+    font-size: 30px !important;
+}
+
+.body {
+    background-color: #eee;
+}
+
+.container {
+    background-color: #ffffff !important;
+}
+
+.container-margin {
+    margin-top: 2.5% !important;
+}
+
+.basic {
+    margin: 0 !important;
+    padding: 20px 0 0 0 !important;
+}
+
+.zero-margin {
+    margin: 0 !important;
+}
+
+p {
+    padding: 0 15px 0 15px !important;
+    text-align: left;
+}
+
+#grid-controller {
+    margin: 0 auto 2.5% auto !important;
+}
