@@ -458,8 +458,17 @@ body, html {
         font-size: 5em;
         top: 5%;
         left: 5%;
-        opacity: .05;
+        opacity: .08;
     }
+    
+    /*.quote-testimonials-big {*/
+    /*    z-index: -50;*/
+    /*    position: absolute;*/
+    /*    font-size: 3em;*/
+    /*    bottom: 5%;*/
+    /*    right: 5%;*/
+    /*    opacity: .08;*/
+    /*}*/
 
 /* Contact Section */
 
@@ -513,7 +522,7 @@ body, html {
 
 /* Footer */
 
-    .fa-heart {
+    #footer .fa-heart {
         color: #be1931;
     }
 
