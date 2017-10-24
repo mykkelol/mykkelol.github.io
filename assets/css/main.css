@@ -18,12 +18,16 @@ body, html {
 .header {
     position: absolute;
     z-index: -100;
-    font-size: 15vw;
+    font-size: 14vw;
     margin: .1em auto;
     opacity: .095;
     text-transform: uppercase;
     font-weight: 600;
     letter-spacing: -5px;
+}
+
+.header-padding {
+    padding-top: 12%;
 }
 
 .header-font {
@@ -271,10 +275,6 @@ body, html {
         padding: 6em 0;
     }
     
-    .project-padding {
-        padding-top: 12%;
-    }
-    
     .briefcase-project {
         z-index: -200;
         position: absolute;
@@ -415,6 +415,51 @@ body, html {
             background: linear-gradient(to right, #E100FF, #7F00FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
             opacity: .65;
         }
+        
+/* Testimonials Section */
+        
+    #testimonials {
+        padding: 6em 0;
+    }
+    
+    .card-testimonials {
+        box-shadow: 5px 5px 25px 0px rgba(46,61,73,.2);
+        height: 250px;
+        position: relative;
+    }
+    
+    .card-testimonials:hover {
+        box-shadow: 5px 5px 25px 0px rgba(46,61,73,.3);
+    }
+    
+    .card-testimonials img {
+        height: 65px;
+        width: 65px;
+        display: block;
+        border-radius: 50%;
+        position: absolute;
+        bottom: -10%;
+        left: 50%;
+        transform: translateX(-50%);
+        box-shadow: 5px 5px 25px 0px rgba(46,61,73,.3);
+    }
+    
+    .p-testimonials {
+        height: 50%;
+    }
+    
+    #testimonials .small {
+        color: rgba(0, 0, 0, .5);
+    }
+    
+    .quote-testimonials {
+        z-index: -50;
+        position: absolute;
+        font-size: 5em;
+        top: 5%;
+        left: 5%;
+        opacity: .05;
+    }
 
 /* Contact Section */
 
