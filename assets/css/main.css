@@ -18,8 +18,8 @@ body, html {
 .header {
     position: absolute;
     z-index: -100;
-    font-size: 14vw;
-    margin: .1em auto;
+    font-size: 13vw;
+    margin: 0em auto;
     opacity: .095;
     text-transform: uppercase;
     font-weight: 600;
