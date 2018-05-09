@@ -1,0 +1,18 @@
+body {
+    background: #11998e;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(left, #38ef7d, #11998e);
+    background: -moz-linear-gradient(left, #38ef7d, #11998e);
+    background: -o-linear-gradient(left, #38ef7d, #11998e);
+    background: linear-gradient(to right, #38ef7d, #11998e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.container {
+    margin-top: 10% !important;
+    background: #11998e;
+    border-radius: 5px;
+    color: white;
+}
+
+a:hover {
+    text-decoration: none !important; 
+}
