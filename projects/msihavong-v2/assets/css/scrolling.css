@@ -1,0 +1,10 @@
+.bg-nav-collapse {
+    background-color: #FFFFFF !important;
+}
+
+.p-2-ease {
+    -moz-transition: padding 1s ease;
+    -o-transition: padding  1s ease;
+    -webkit-transition: padding  1s ease;
+    transition: padding  1s ease;
+}
