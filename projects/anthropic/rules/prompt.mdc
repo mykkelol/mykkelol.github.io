@@ -1,0 +1,10 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+This project must result in a single page only. It is meant to do only one thing—to show video demos. If the project results in multiple working files, they all should work together cohesively. For instance, all styling must be in the main.css, all functionalities and scripting must be in main.js, and lastly, the index.html file should pull the styling and the scripts from those files as needed.
+
+This project must use HTMl, CSS, and JS only as it will be hosted on Github pages. This means if I want to add additional videos, I'd most likely need to hardcode to the .js or .html files directly since there won't be server rendering.
+
+As for styling, always consider how it looks on all devices — the page should be dynamic and compatible for mobile and desktop viewing.
