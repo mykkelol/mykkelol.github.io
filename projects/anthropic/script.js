@@ -32,7 +32,7 @@ const videos = [
         description: "Claude P2P Agent is a cross-functional automation agent that lives directly in your Slack, helping the Procurement and T&E teams expedite spend and expense approvals.",
         subtext: "3 minutes",
         tooltip: "Demo of Claude P2P Agent living in your Slack to expedite expensing.",
-        src: "videos/claude_accounting_demo.mp4",
+        src: "videos/claude_p2p_agent.mp4",
         thumbnail: "videos/claude_p2p_agent_thumbnail.mp4",
         still_thumbnail: "images/claude-person.png",
         type: "mp4",
