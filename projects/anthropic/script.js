@@ -27,10 +27,10 @@ const videos = [
         pdf: "pdfs/claude_accounting.pdf"
     },
     {
-        id: "ap-agent",
+        id: "p2p-agent",
         title: "Claude Procure-to-Pay Agent",
         description: "Claude P2P Agent is a cross-functional automation agent that lives directly in your Slack, helping the Procurement and T&E teams expedite spend and expense approvals.",
-        subtext: "3 minutes",
+        subtext: "2 minutes",
         tooltip: "Demo of Claude P2P Agent living in your Slack to expedite expensing.",
         src: "videos/claude_p2p_agent.mp4",
         thumbnail: "videos/claude_p2p_agent_thumbnail.mp4",
