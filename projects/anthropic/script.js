@@ -3,10 +3,10 @@ const videos = [
     {
         id: "billing-agent",
         title: "Claude Billing Agent",
-        description: "Claude Billing Agent is an \"ambient agent\" that collaborates with Accounts Receivable teams to automatically resolve customer inquiries and expedite cash collection.",
+        description: "Claude Billing Agent is an \"ambient agent\" that collaborates with Accounts Receivable teams to automatically resolve customer inquiries and expedite cash collection. Built with JS, MCP, and REST APIs.",
         subtext: "2 minutes",
         tooltip: "Demo of Claude Billing Agent to expedite cash collection.",
-        src: "videos/claude_accounting_demo.mp4",
+        src: "videos/claude_billing_agent.mp4",
         thumbnail: "videos/billing_agent_thumbnail.mp4",
         still_thumbnail: "images/claude-holding.png",
         type: "mp4",
@@ -23,13 +23,13 @@ const videos = [
         still_thumbnail: "images/claude-code.png",
         type: "mp4",
         main: true,
-        description: 'My Anthropic x PearVC Hackathon 2025 submission that was selected as finalist after competing with 200+ hackers and 75+ teams using MCP and Anthropic\'s Claude API.',
+        description: 'My Anthropic x PearVC Hackathon 2025 submission that was selected as finalist after competing with 200+ hackers and 75+ teams using MCP and Anthropic\'s Claude API. Built with JS, Python, MCP, and REST APIs.',
         pdf: "pdfs/claude_accounting.pdf"
     },
     {
         id: "p2p-agent",
         title: "Claude Procure-to-Pay Agent",
-        description: "Claude P2P Agent is a cross-functional automation agent that lives directly in your Slack, helping the Procurement and T&E teams expedite spend and expense approvals.",
+        description: "Claude P2P Agent is a cross-functional agent that lives directly in your Slack, helping the Procurement and T&E teams expedite spend and expense approvals. Built with JS, Python, MCP, and SOAP/REST APIs.",
         subtext: "2 minutes",
         tooltip: "Demo of Claude P2P Agent living in your Slack to expedite expensing.",
         src: "videos/claude_p2p_agent.mp4",
