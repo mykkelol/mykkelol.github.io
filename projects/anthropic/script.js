@@ -306,11 +306,21 @@ function openVideoModal(video) {
     // Show modal
     videoModal.classList.add('active');
     document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    
+    // Fix mobile positioning issues
+    if (window.innerWidth <= 768) {
+        // Force reflow and ensure proper positioning on mobile
+        videoModal.offsetHeight;
+        window.scrollTo(0, 0);
+        
+        // Add mobile-specific class for additional styling
+        videoModal.classList.add('mobile-active');
+    }
 }
 
 // Close video modal
 function closeVideoModal() {
-    videoModal.classList.remove('active');
+    videoModal.classList.remove('active', 'mobile-active');
     document.body.style.overflow = ''; // Restore scrolling
     
     // Clear video content

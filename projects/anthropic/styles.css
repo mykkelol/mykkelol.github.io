@@ -532,11 +532,25 @@ video {
     z-index: 1000;
     opacity: 0;
     transition: opacity 0.3s ease;
+    /* Ensure proper mobile positioning */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
 }
 
 .video-modal.active {
     display: flex;
     opacity: 1;
+}
+
+.video-modal.mobile-active {
+    /* Additional mobile positioning fixes */
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
 }
 
 .modal-content {
@@ -545,6 +559,9 @@ video {
     max-width: 1200px;
     margin: auto;
     aspect-ratio: 16/9;
+    /* Ensure proper mobile positioning */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
 }
 
 .modal-close {
@@ -768,5 +785,34 @@ video {
     header .description p,
     header .description .right-content {
         width: 100%;
+    }
+
+    /* Mobile-specific modal fixes */
+    .video-modal,
+    .pdf-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100vw;
+        height: 100vh;
+        transform: none;
+        -webkit-transform: none;
+    }
+
+    .modal-content {
+        width: 95%;
+        max-width: none;
+        margin: 20px auto;
+        aspect-ratio: 16/9;
+        transform: none;
+        -webkit-transform: none;
+    }
+
+    .modal-close {
+        top: -50px;
+        right: 10px;
+        font-size: 28px;
     }
 }
