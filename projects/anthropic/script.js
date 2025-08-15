@@ -1,6 +1,19 @@
 // Video data - Add your videos here
 const videos = [
     {
+        id: "claude-accounting",
+        title: "Claude for Accounting",
+        subtext: "3 minutes",
+        tooltip: "Demo of Claude for Accounting, agentic AI for accountants",
+        src: "videos/claude_accounting_demo.mp4",
+        thumbnail: "videos/claude_accounting_thumbnail.mp4",
+        still_thumbnail: "images/claude-code.png",
+        type: "mp4",
+        main: false,
+        description: 'My Anthropic x PearVC Hackathon 2025 submission that was selected as finalist after competing with 200+ hackers and 75+ teams using MCP and Anthropic\'s Claude API. Built with JS, MCP, and REST APIs.',
+        pdf: "pdfs/claude_accounting.pdf"
+    },
+    {
         id: "claude-billing-agent",
         title: "Claude Billing Agent",
         description: "Claude Billing Agent is an \"ambient agent\" that collaborates with Accounts Receivable teams to automatically resolve customer inquiries and expedite cash collection. Built with JS, MCP, and REST APIs.",
@@ -10,21 +23,8 @@ const videos = [
         thumbnail: "videos/billing_agent_thumbnail.mp4",
         still_thumbnail: "images/claude-holding.png",
         type: "mp4",
-        main: false,
-        pdf: "pdfs/claude_billing_agent.pdf"
-    },
-    {
-        id: "claude-accounting",
-        title: "Claude for Accounting",
-        subtext: "3 minutes",
-        tooltip: "Demo of Claude for Accounting, agentic AI for accountants",
-        src: "videos/claude_accounting_demo.mp4",
-        thumbnail: "videos/claude_accounting_thumbnail.mp4",
-        still_thumbnail: "images/claude-code.png",
-        type: "mp4",
         main: true,
-        description: 'My Anthropic x PearVC Hackathon 2025 submission that was selected as finalist after competing with 200+ hackers and 75+ teams using MCP and Anthropic\'s Claude API. Built with JS, MCP, and REST APIs.',
-        pdf: "pdfs/claude_accounting.pdf"
+        pdf: "pdfs/claude_billing_agent.pdf"
     },
     {
         id: "claude-p2p-agent",
