@@ -21,7 +21,7 @@ const videos = [
         tooltip: "Demo of Claude Billing Agent to expedite cash collection.",
         src: "videos/claude_billing_agent.mp4",
         thumbnail: "videos/billing_agent_thumbnail.mp4",
-        still_thumbnail: "images/claude-holding.png",
+        still_thumbnail: "images/claude-teamwork.png",
         type: "mp4",
         main: true,
         pdf: "pdfs/claude_billing_agent.pdf"
