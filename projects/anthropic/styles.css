@@ -804,7 +804,7 @@ video {
     .modal-content {
         width: 95%;
         max-width: none;
-        margin: 20px auto;
+        margin: 10vh auto;
         aspect-ratio: 16/9;
         transform: none;
         -webkit-transform: none;
