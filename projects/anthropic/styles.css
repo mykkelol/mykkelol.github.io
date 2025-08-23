@@ -744,6 +744,20 @@ video {
         margin: 12px 15px 0 15px;
     }
 
+    header .transition {
+        margin-bottom: 0;
+    }
+
+    .carousel-track {
+        min-height: 450px;
+        padding: 0;
+    }
+
+    .footer {
+        padding: 0;
+        padding-bottom: 5px;
+    }
+
     .video-description {
         flex-direction: column;
         align-items: flex-start;
@@ -764,7 +778,7 @@ video {
     }
 
     .carousel-container {
-        padding: 0 15px;
+        padding: 20px 15px;
         position: relative;
         overflow: hidden;
     }
