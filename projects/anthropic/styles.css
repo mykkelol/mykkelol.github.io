@@ -731,6 +731,11 @@ video {
     .carousel-item {
         width: min(75%, 850px);
     }
+
+    /* Hide mobile navigation on desktop */
+    .mobile-nav-buttons {
+        display: none !important;
+    }
 }
 
 /* Tablet & Mobile */
@@ -743,6 +748,15 @@ video {
         flex-direction: column;
         align-items: flex-start;
         gap: 15px;
+        padding-bottom: 0;
+    }
+
+    /* Create a row for buttons to share */
+    .button-row {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        width: 100%;
     }
 
     .read-more-btn {
@@ -751,6 +765,8 @@ video {
 
     .carousel-container {
         padding: 0 15px;
+        position: relative;
+        overflow: hidden; /* Prevent adjacent content from bleeding */
     }
 
     .carousel-item {
@@ -758,9 +774,45 @@ video {
         width: min(100%, 500px);
     }
 
+    /* Hide desktop navigation on mobile */
     .carousel-button {
-        width: 35px;
-        height: 35px;
+        display: none !important;
+    }
+
+    /* Mobile navigation buttons - positioned inside video description */
+    .mobile-nav-buttons {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        margin-left: auto; /* Push to the right side */
+    }
+
+    .mobile-nav-button {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #141413;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #faf9f5;
+        font-size: 14px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        margin-bottom: -10px;
+    }
+
+    .mobile-nav-button:hover {
+        background-color: #3d3d3a;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        transform: scale(1.05);
+    }
+
+    /* Video description styling for mobile */
+    .carousel-item .video-description {
+        position: relative;
     }
 
     .carousel-button i {
@@ -770,11 +822,25 @@ video {
     .carousel-item.adjacent:nth-child(odd) {
         left: -5%;
         transform: translate(-100%, -50%);
+        clip-path: inset(0 0 0 0); /* Show left portion of video */
     }
 
     .carousel-item.adjacent:nth-child(even) {
         left: 105%;
         transform: translate(0, -50%);
+        clip-path: inset(0 0 0 0); /* Show right portion of video */
+    }
+
+    /* Hide text content on adjacent videos to prevent bleeding */
+    .carousel-item.adjacent .video-description {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    /* Hide mobile navigation on adjacent videos */
+    .carousel-item.adjacent .mobile-nav-buttons {
+        opacity: 0;
+        pointer-events: none;
     }
 
     header .description {

@@ -230,7 +230,17 @@ function initializeCarousel() {
                     <p>${video.description}</p>
                     <span class="subtext">${video.subtext}</span>
                 </div>
-                <button class="read-more-btn">View architecture</button>
+                <div class="button-row">
+                    <button class="read-more-btn">View architecture</button>
+                    <div class="mobile-nav-buttons">
+                        <button class="mobile-nav-button prev" data-direction="prev">
+                            <i class="fas fa-long-arrow-left"></i>
+                        </button>
+                        <button class="mobile-nav-button next" data-direction="next">
+                            <i class="fas fa-long-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         `;
         
@@ -260,6 +270,20 @@ function initializeCarousel() {
                     goToNext();
                 }
             }
+        });
+
+        // Add click events for mobile navigation buttons
+        const mobilePrevBtn = carouselItem.querySelector('.mobile-nav-button.prev');
+        const mobileNextBtn = carouselItem.querySelector('.mobile-nav-button.next');
+        
+        mobilePrevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            goToPrev();
+        });
+        
+        mobileNextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            goToNext();
         });
 
         // Start playing video thumbnails
@@ -426,8 +450,15 @@ function updateCarousel() {
     });
 
     // Update navigation buttons state
-    prevButton.style.display = currentIndex === 0 ? 'none' : 'flex';
-    nextButton.style.display = currentIndex === videos.length - 1 ? 'none' : 'flex';
+    if (window.innerWidth <= 768) {
+        // Mobile: Always show buttons for circular navigation
+        prevButton.style.display = 'flex';
+        nextButton.style.display = 'flex';
+    } else {
+        // Desktop: Hide buttons at edges
+        prevButton.style.display = currentIndex === 0 ? 'none' : 'flex';
+        nextButton.style.display = currentIndex === videos.length - 1 ? 'none' : 'flex';
+    }
 
     // Update tooltip content if it's currently being shown
     const existingPreview = document.querySelector('.navigation-preview');
@@ -449,15 +480,21 @@ function updateCarousel() {
 function goToNext() {
     if (currentIndex < videos.length - 1) {
         currentIndex++;
-        updateCarousel();
+    } else {
+        // Circular navigation: go to first video
+        currentIndex = 0;
     }
+    updateCarousel();
 }
 
 function goToPrev() {
     if (currentIndex > 0) {
         currentIndex--;
-        updateCarousel();
+    } else {
+        // Circular navigation: go to last video
+        currentIndex = videos.length - 1;
     }
+    updateCarousel();
 }
 
 // Initialize when DOM is loaded
