@@ -751,7 +751,6 @@ video {
         padding-bottom: 0;
     }
 
-    /* Create a row for buttons to share */
     .button-row {
         display: flex;
         gap: 15px;
@@ -761,12 +760,13 @@ video {
 
     .read-more-btn {
         align-self: flex-start;
+        margin-top: 0;
     }
 
     .carousel-container {
         padding: 0 15px;
         position: relative;
-        overflow: hidden; /* Prevent adjacent content from bleeding */
+        overflow: hidden;
     }
 
     .carousel-item {
@@ -774,17 +774,15 @@ video {
         width: min(100%, 500px);
     }
 
-    /* Hide desktop navigation on mobile */
     .carousel-button {
         display: none !important;
     }
 
-    /* Mobile navigation buttons - positioned inside video description */
     .mobile-nav-buttons {
         display: flex;
         gap: 10px;
         align-items: center;
-        margin-left: auto; /* Push to the right side */
+        margin-left: auto;
     }
 
     .mobile-nav-button {
@@ -801,7 +799,6 @@ video {
         font-size: 14px;
         transition: all 0.3s ease;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        margin-bottom: -10px;
     }
 
     .mobile-nav-button:hover {
@@ -810,7 +807,6 @@ video {
         transform: scale(1.05);
     }
 
-    /* Video description styling for mobile */
     .carousel-item .video-description {
         position: relative;
     }
@@ -820,24 +816,22 @@ video {
     }
 
     .carousel-item.adjacent:nth-child(odd) {
-        left: -5%;
+        left: -15%;
         transform: translate(-100%, -50%);
-        clip-path: inset(0 0 0 0); /* Show left portion of video */
+        clip-path: inset(0 0 0 0);
     }
 
     .carousel-item.adjacent:nth-child(even) {
-        left: 105%;
+        left: 115%;
         transform: translate(0, -50%);
-        clip-path: inset(0 0 0 0); /* Show right portion of video */
+        clip-path: inset(0 0 0 0);
     }
 
-    /* Hide text content on adjacent videos to prevent bleeding */
     .carousel-item.adjacent .video-description {
         opacity: 0;
         pointer-events: none;
     }
 
-    /* Hide mobile navigation on adjacent videos */
     .carousel-item.adjacent .mobile-nav-buttons {
         opacity: 0;
         pointer-events: none;
@@ -853,7 +847,6 @@ video {
         width: 100%;
     }
 
-    /* Mobile-specific modal fixes */
     .video-modal,
     .pdf-modal {
         position: fixed;
