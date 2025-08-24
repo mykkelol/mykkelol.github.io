@@ -223,6 +223,11 @@ function initializeCarousel() {
                         <i class="fas fa-play"></i>
                     </button>
                 </div>
+                <div class="progress-dots">
+                    ${videos.map((_, dotIndex) => `
+                        <div class="progress-dot" data-index="${dotIndex}"></div>
+                    `).join('')}
+                </div>
             </div>
             <div class="video-description">
                 <div class="text-content">
@@ -293,6 +298,16 @@ function initializeCarousel() {
             goToNext();
         });
 
+        // Add click events for progress dots
+        const progressDots = carouselItem.querySelectorAll('.progress-dot');
+        progressDots.forEach((dot, dotIndex) => {
+            dot.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentIndex = dotIndex;
+                updateCarousel();
+            });
+        });
+
         // Start playing video thumbnails
         const thumbnailVideo = carouselItem.querySelector('.thumbnail-video');
         const stillThumbnail = carouselItem.querySelector('.still-thumbnail');
@@ -305,6 +320,19 @@ function initializeCarousel() {
 
     // Set initial state
     updateCarousel();
+    
+    // Initialize progress dots for mobile
+    if (window.innerWidth <= 768) {
+        setTimeout(() => {
+            const allProgressDots = document.querySelectorAll('.progress-dot');
+            allProgressDots.forEach((dot, index) => {
+                dot.classList.remove('active');
+                if (parseInt(dot.dataset.index) === currentIndex) {
+                    dot.classList.add('active');
+                }
+            });
+        }, 100); // Small delay to ensure DOM is ready
+    }
 }
 
 // Open video modal
@@ -480,6 +508,20 @@ function updateCarousel() {
         } else {
             hideNavigationPreview();
         }
+    }
+
+    // Update progress dots for mobile
+    if (window.innerWidth <= 768) {
+        const allProgressDots = document.querySelectorAll('.progress-dot');
+        allProgressDots.forEach((dot, index) => {
+            // Remove active class from all dots first
+            dot.classList.remove('active');
+            
+            // Add active class to current video dot
+            if (parseInt(dot.dataset.index) === currentIndex) {
+                dot.classList.add('active');
+            }
+        });
     }
 }
 
