@@ -336,7 +336,6 @@ video {
     padding: 0 3%;
 }
 
-/* Scroll navigation feedback */
 .carousel-container.scroll-feedback {
     animation: scrollFeedback 0.3s ease-out;
 }
@@ -520,7 +519,6 @@ video {
     background: #000;
 }
 
-/* Video Modal Styles */
 .video-modal {
     display: none;
     position: fixed;
@@ -532,7 +530,6 @@ video {
     z-index: 1000;
     opacity: 0;
     transition: opacity 0.3s ease;
-    /* Ensure proper mobile positioning */
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
 }
@@ -543,7 +540,6 @@ video {
 }
 
 .video-modal.mobile-active {
-    /* Additional mobile positioning fixes */
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
@@ -559,7 +555,6 @@ video {
     max-width: 1200px;
     margin: auto;
     aspect-ratio: 16/9;
-    /* Ensure proper mobile positioning */
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
 }
@@ -596,7 +591,6 @@ video {
     border: none;
 }
 
-/* PDF Modal Styles */
 .pdf-modal {
     display: none;
     position: fixed;
@@ -711,14 +705,12 @@ video {
     pointer-events: none;
 }
 
-/* Large Desktop */
 @media (min-width: 1400px) {
     .container {
       width: min(70%, 1200px);
     }
 }
 
-/* Desktop */
 @media (min-width: 1000px) {
     header {
         margin: 12px 3% 0 3%;
@@ -732,13 +724,11 @@ video {
         width: min(75%, 850px);
     }
 
-    /* Hide mobile navigation on desktop */
-    .mobile-nav-buttons {
+    .mobile-nav-container {
         display: none !important;
     }
 }
 
-/* Tablet & Mobile */
 @media (max-width: 768px) {
     header {
         margin: 12px 15px 0 15px;
@@ -792,11 +782,27 @@ video {
         display: none !important;
     }
 
+    .mobile-nav-container {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        margin-left: auto;
+    }
+
     .mobile-nav-buttons {
         display: flex;
         gap: 10px;
         align-items: center;
-        margin-left: auto;
+    }
+
+    .video-counter {
+        font-family: "Aptos", sans-serif;
+        font-size: 14px;
+        color: #666;
+        font-weight: 500;
+        min-width: 40px;
+        text-align: center;
+        padding: 0 5px;
     }
 
     .mobile-nav-button {
@@ -819,6 +825,22 @@ video {
         background-color: #3d3d3a;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
         transform: scale(1.05);
+    }
+
+    .mobile-nav-button:active {
+        transform: scale(0.95);
+        background-color: #2a2a27;
+        transition: all 0.1s ease;
+    }
+
+    .mobile-nav-button.clicked {
+        animation: buttonClick 0.3s ease;
+    }
+
+    @keyframes buttonClick {
+        0% { transform: scale(1); }
+        50% { transform: scale(0.9); background-color: #2a2a27; }
+        100% { transform: scale(1); }
     }
 
     .carousel-item .video-description {

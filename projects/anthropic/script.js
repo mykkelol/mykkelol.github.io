@@ -232,10 +232,11 @@ function initializeCarousel() {
                 </div>
                 <div class="button-row">
                     <button class="read-more-btn">View architecture</button>
-                    <div class="mobile-nav-buttons">
+                    <div class="mobile-nav-container">
                         <button class="mobile-nav-button prev" data-direction="prev">
                             <i class="fas fa-long-arrow-left"></i>
                         </button>
+                        <span class="video-counter">${index + 1} / ${videos.length}</span>
                         <button class="mobile-nav-button next" data-direction="next">
                             <i class="fas fa-long-arrow-right"></i>
                         </button>
@@ -278,11 +279,17 @@ function initializeCarousel() {
         
         mobilePrevBtn.addEventListener('click', (e) => {
             e.stopPropagation();
+            // Add click feedback
+            mobilePrevBtn.classList.add('clicked');
+            setTimeout(() => mobilePrevBtn.classList.remove('clicked'), 300);
             goToPrev();
         });
         
         mobileNextBtn.addEventListener('click', (e) => {
             e.stopPropagation();
+            // Add click feedback
+            mobileNextBtn.classList.add('clicked');
+            setTimeout(() => mobileNextBtn.classList.remove('clicked'), 300);
             goToNext();
         });
 
