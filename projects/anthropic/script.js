@@ -205,10 +205,14 @@ function initializeCarousel() {
                         <i class="fas fa-play"></i>
                     </button>
                 </div>
-                <div class="progress-dots">
-                    ${videos.map((_, dotIndex) => `
-                        <div class="progress-dot" data-index="${dotIndex}"></div>
-                    `).join('')}
+                <div class="mobile-nav-container">
+                    <button class="mobile-nav-button prev" data-direction="prev">
+                        <i class="fas fa-long-arrow-left"></i>
+                    </button>
+                    <span class="video-counter">${index + 1} / ${videos.length}</span>
+                    <button class="mobile-nav-button next" data-direction="next">
+                        <i class="fas fa-long-arrow-right"></i>
+                    </button>
                 </div>
             </div>
             <div class="video-description">
@@ -219,15 +223,6 @@ function initializeCarousel() {
                 </div>
                 <div class="button-row">
                     <button class="read-more-btn">View architecture</button>
-                    <div class="mobile-nav-container">
-                        <button class="mobile-nav-button prev" data-direction="prev">
-                            <i class="fas fa-long-arrow-left"></i>
-                        </button>
-                        <span class="video-counter">${index + 1} / ${videos.length}</span>
-                        <button class="mobile-nav-button next" data-direction="next">
-                            <i class="fas fa-long-arrow-right"></i>
-                        </button>
-                    </div>
                 </div>
             </div>
         `;
@@ -273,15 +268,6 @@ function initializeCarousel() {
             goToNext();
         });
 
-        const progressDots = carouselItem.querySelectorAll('.progress-dot');
-        progressDots.forEach((dot, dotIndex) => {
-            dot.addEventListener('click', (e) => {
-                e.stopPropagation();
-                currentIndex = dotIndex;
-                updateCarousel();
-            });
-        });
-
         const thumbnailVideo = carouselItem.querySelector('.thumbnail-video');
         const stillThumbnail = carouselItem.querySelector('.still-thumbnail');
         if (thumbnailVideo) {
@@ -302,14 +288,6 @@ function initializeCarousel() {
                     activePlayButton.classList.add('expanded');
                 }
             }
-            
-            const allProgressDots = document.querySelectorAll('.progress-dot');
-            allProgressDots.forEach((dot, index) => {
-                dot.classList.remove('active');
-                if (parseInt(dot.dataset.index) === currentIndex) {
-                    dot.classList.add('active');
-                }
-            });
         }, 100);
     }
 }
@@ -472,17 +450,6 @@ function updateCarousel() {
         } else {
             hideNavigationPreview();
         }
-    }
-
-    if (window.innerWidth <= 768) {
-        const allProgressDots = document.querySelectorAll('.progress-dot');
-        allProgressDots.forEach((dot, index) => {
-            dot.classList.remove('active');
-            
-            if (parseInt(dot.dataset.index) === currentIndex) {
-                dot.classList.add('active');
-            }
-        });
     }
 }
 

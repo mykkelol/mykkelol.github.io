@@ -833,6 +833,64 @@ video {
         100% { transform: scale(1); }
     }
 
+    .mobile-nav-container {
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        z-index: 1;
+        background: rgba(61, 61, 58, 0.6);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+        padding: 8px 16px;
+        border-radius: 25px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        width: 130px;
+        justify-content: center;
+    }
+
+    .mobile-nav-button {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-color: #141413;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #faf9f5;
+        font-size: 11px;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        flex-shrink: 0;
+    }
+
+    .mobile-nav-button:hover {
+        background-color: #3d3d3a;
+        transform: scale(1.05);
+    }
+
+    .mobile-nav-button:active {
+        transform: scale(0.95);
+        background-color: #2a2a27;
+        transition: all 0.1s ease;
+    }
+
+    .video-counter {
+        font-family: "Aptos", sans-serif;
+        font-size: 11px;
+        color: white;
+        font-weight: 500;
+        min-width: 30px;
+        text-align: center;
+        padding: 0 5px;
+        flex-shrink: 0;
+    }
+
     .progress-dots {
         position: absolute;
         bottom: 15px;
@@ -867,6 +925,12 @@ video {
         background-color: #ffffff;
         border-color: #ffffff;
         box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+    }
+
+    @media (max-width: 768px) {
+        .progress-dots {
+            display: none;
+        }
     }
 
     .video-modal,
