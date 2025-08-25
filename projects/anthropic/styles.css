@@ -243,6 +243,7 @@ video {
 @media (max-width: 768px) {
     .play-button {
         width: 50px;
+        height: 45px;
         border-radius: 50%;
         background: #141413;
         transition: all 0.5s ease;
@@ -269,9 +270,15 @@ video {
     
     .play-button i {
         left: 5px;
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
     }
     
     .play-button {
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
         animation: mobilePlayButtonEntrance 0.8s ease-out;
     }
     
@@ -836,8 +843,7 @@ video {
     .mobile-nav-container {
         position: absolute;
         bottom: 15px;
-        left: 50%;
-        transform: translateX(-50%);
+        right: 15px;
         display: flex;
         gap: 12px;
         align-items: center;
@@ -972,6 +978,6 @@ video {
     .footer {
         padding: 0;
         padding-bottom: 5px;
-        margin-top: 25px;
+        margin-top: 10px;
     }
 }
