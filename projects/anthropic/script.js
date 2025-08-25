@@ -1,3 +1,13 @@
+/**
+ * Video Carousel with Mobile-Optimized Navigation
+ * 
+ * Features:
+ * - Desktop: Scroll up/down or left/right to navigate videos
+ * - Mobile: Only left/right scrolling and touch swipes navigate videos
+ * - Vertical scrolling on mobile is blocked to prevent accidental navigation
+ * - Touch swipe gestures work on all devices
+ */
+
 const videos = [
     {
         id: "claude-accounting",
@@ -90,11 +100,14 @@ function handleScrollDirection(event) {
         const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
         const currentScrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
         
-        if (Math.abs(currentScrollLeft - lastScrollLeft) > Math.abs(currentScrollTop - lastScrollTop)) {
-            scrollDelta = currentScrollLeft - lastScrollLeft;
+        const deltaTop = currentScrollTop - lastScrollTop;
+        const deltaLeft = currentScrollLeft - lastScrollLeft;
+        
+        if (Math.abs(deltaLeft) > Math.abs(deltaTop)) {
+            scrollDelta = deltaLeft;
             isHorizontalScroll = true;
         } else {
-            scrollDelta = currentScrollTop - lastScrollTop;
+            scrollDelta = deltaTop;
             isHorizontalScroll = false;
         }
         
@@ -108,9 +121,6 @@ function handleScrollDirection(event) {
     let direction = '';
     
     if (isHorizontalScroll) {
-        if (window.innerWidth <= 768) {
-            console.log('Mobile device: allowing horizontal scroll navigation');
-        }
         if (scrollDelta > 0) {
             direction = 'next';
             shouldNavigate = true;
@@ -120,7 +130,6 @@ function handleScrollDirection(event) {
         }
     } else {
         if (window.innerWidth <= 768) {
-            console.log('Mobile device: blocking vertical scroll navigation');
             return;
         }
         
@@ -145,8 +154,6 @@ function handleScrollDirection(event) {
         setTimeout(() => {
             carouselContainer.classList.remove('scroll-feedback');
         }, 300);
-        
-        console.log(`Scroll navigation: ${direction} (${isHorizontalScroll ? 'horizontal' : 'vertical'} scroll)`);
         
         if (direction === 'next') {
             goToNext();
@@ -535,17 +542,51 @@ document.addEventListener('DOMContentLoaded', () => {
     let touchStartY = 0;
     let touchEndX = 0;
     let touchEndY = 0;
+    let touchStartTime = 0;
+    let lastMobileScrollTop = 0;
+    let lastMobileScrollLeft = 0;
+    let mobileScrollTimeout;
     
     document.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
         touchStartY = e.changedTouches[0].screenY;
+        touchStartTime = Date.now();
     }, { passive: true });
     
     document.addEventListener('touchend', (e) => {
         touchEndX = e.changedTouches[0].screenX;
         touchEndY = e.changedTouches[0].screenY;
-        handleSwipe();
+        const touchEndTime = Date.now();
+        const touchDuration = touchEndTime - touchStartTime;
+        
+        if (touchDuration < 300) {
+            handleSwipe();
+        }
     }, { passive: true });
+    
+    if (window.innerWidth <= 768) {
+        window.addEventListener('scroll', () => {
+            clearTimeout(mobileScrollTimeout);
+            mobileScrollTimeout = setTimeout(() => {
+                const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const currentScrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+                
+                const deltaTop = currentScrollTop - lastMobileScrollTop;
+                const deltaLeft = currentScrollLeft - lastMobileScrollLeft;
+                
+                if (Math.abs(deltaLeft) > Math.abs(deltaTop) && Math.abs(deltaLeft) > scrollThreshold) {
+                    if (deltaLeft > 0) {
+                        goToPrev();
+                    } else {
+                        goToNext();
+                    }
+                }
+                
+                lastMobileScrollTop = currentScrollTop;
+                lastMobileScrollLeft = currentScrollLeft;
+            }, 100);
+        }, { passive: true });
+    }
     
     function handleSwipe() {
         const deltaX = touchEndX - touchStartX;
@@ -559,6 +600,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 goToNext();
             }
         } else if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > minSwipeDistance) {
+            if (window.innerWidth <= 768) {
+                return;
+            }
+            
             if (deltaY > 0) {
                 goToNext();
             } else {

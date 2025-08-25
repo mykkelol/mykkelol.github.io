@@ -972,5 +972,6 @@ video {
     .footer {
         padding: 0;
         padding-bottom: 5px;
+        margin-top: 50px;
     }
 }
