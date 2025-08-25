@@ -847,7 +847,6 @@ video {
         position: relative;
     }
 
-    /* Progress dots styling */
     .progress-dots {
         position: absolute;
         bottom: 15px;
@@ -856,27 +855,32 @@ video {
         display: flex;
         gap: 8px;
         z-index: 2;
+        background-color: #141413;
+        padding: 6px 8px;
+        border-radius: 10px;
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
     }
 
     .progress-dot {
-        width: 8px;
-        height: 8px;
+        width: 4px;
+        height: 4px;
         border-radius: 50%;
-        background-color: rgba(255, 255, 255, 0.6);
+        background-color: rgba(255, 255, 255, 0.4);
         cursor: pointer;
         transition: all 0.3s ease;
-        border: 2px solid rgba(255, 255, 255, 0.3);
     }
 
     .progress-dot:hover {
-        background-color: rgba(255, 255, 255, 0.8);
+        background-color: rgba(255, 255, 255, 0.7);
         transform: scale(1.2);
+        border-color: rgba(255, 255, 255, 0.4);
     }
 
     .progress-dot.active {
-        background-color: #141413;
-        border-color: #141413;
-        transform: scale(1.3);
+        background-color: #ffffff;
+        border-color: #ffffff;
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
     }
 
     .carousel-button i {
