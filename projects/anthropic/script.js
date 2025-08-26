@@ -1,13 +1,3 @@
-/**
- * Video Carousel with Mobile-Optimized Navigation
- * 
- * Features:
- * - Desktop: Scroll up/down or left/right to navigate videos
- * - Mobile: Only left/right scrolling and touch swipes navigate videos
- * - Vertical scrolling on mobile is blocked to prevent accidental navigation
- * - Touch swipe gestures work on all devices
- */
-
 const videos = [
     {
         id: "claude-accounting",
