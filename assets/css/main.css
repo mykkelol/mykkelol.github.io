@@ -289,10 +289,10 @@ body {
     inset: 0;
     width: 100%;
     height: 100%;
-    /* Letterbox rather than crop if a video's aspect ever differs. */
-    object-fit: contain;
+    /* Fill the frame edge-to-edge; crop rather than letterbox if a video's
+       aspect ever differs from the billboard's. */
+    object-fit: cover;
     display: block;
-    background: #141413;
     transition: opacity 0.3s ease;
 }
 
@@ -1616,6 +1616,38 @@ button.shout__link {
         order: -1;
     }
 
+    /* On mobile the panels stack under the bio, so keeping ALL hidden panels
+       in the layout (visibility:hidden) would inflate the canvas to the
+       tallest tab (Projects/Shouts are ~1500px+ single-column lists) and
+       strand the intro art in a sea of empty space. Drop those tall panels
+       from layout when hidden, but keep the two short panels (Intro, Talks)
+       equalizing each other via the grid stack so switching between them
+       never shifts the page. Projects/Shouts height changes happen below
+       the fold, so they don't read as movement. */
+    .canvas-panel[hidden] {
+        display: none;
+    }
+
+    .canvas-panel[data-panel="intro"][hidden],
+    .canvas-panel[data-panel="speaking"][hidden] {
+        display: block;
+        visibility: hidden;
+    }
+
+    .intro-figure,
+    .talks-figure {
+        min-height: 0;
+        height: 100%;
+    }
+
+    /* Size the art by width (its natural aspect), centered in the canvas
+       height shared with the Talks tab. */
+    .intro-art {
+        height: auto;
+        width: 100%;
+        max-height: 100%;
+    }
+
     .merge {
         grid-template-columns: 1fr;
         gap: 32px;
@@ -1652,8 +1684,82 @@ button.shout__link {
 }
 
 @media (max-width: 560px) {
-    /* Single-column stack on small screens. */
+    /* Single-column stack on small screens. The desktop hairline-grid trick
+       (1px gaps over a divider-colored background) reads as bare rows when
+       stacked, so switch to real spaced cards with their own borders. */
     .shouts-grid {
         grid-template-columns: 1fr;
+        gap: 12px;
+        background: none;
+    }
+
+    /* Match the Talks rail cards' chrome so all three tabs read as one
+       card system on mobile. */
+    .shout {
+        border: 1px solid #edece8;
+        border-radius: 5px;
+        background: #f2f1ed;
+    }
+
+    [data-theme="dark"] .shout {
+        background: #1b1912;
+        border-color: #211e18;
+    }
+
+    /* Talks rail: stack the previews as full-width cards (matching the
+       Projects/Shouts mobile card treatment) instead of a squeezed
+       horizontal poster strip. */
+    .talks-rail__row {
+        flex-direction: column;
+        gap: 12px;
+        height: auto;
+    }
+
+    .rail-card {
+        flex: none;
+        width: 100%;
+    }
+
+    .rail-card__media-box {
+        flex: none;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+    }
+
+    /* The Netflix-style side panel expands by width, which doesn't fit a
+       stacked column. Instead, show every card's details full-width below
+       its thumbnail (mirroring the Projects/Shouts card anatomy). */
+    .rail-card {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .rail-card__panel,
+    .rail-card.is-active .rail-card__panel,
+    .rail-card:hover .rail-card__panel,
+    .talks-rail__row:has(.rail-card:hover) .rail-card.is-active:not(:hover) .rail-card__panel {
+        width: 100%;
+        transition: none;
+    }
+
+    .rail-card__panel-inner {
+        width: 100%;
+        padding: 16px 16px 12px;
+    }
+
+    .rail-card:hover,
+    .rail-card.is-active {
+        flex-grow: 0;
+    }
+
+    /* With the rail stacked, Talks is no longer a short tab, so don't let it
+       set Intro's height (it would center the intro art in ~900px of empty
+       canvas). Intro stands alone at its natural width-based height here. */
+    .canvas-panel[data-panel="speaking"][hidden] {
+        display: none;
+    }
+
+    .intro-figure {
+        height: auto;
     }
 }

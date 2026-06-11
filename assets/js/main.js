@@ -616,7 +616,6 @@
     if (!tabs) return;
     var panels = document.querySelectorAll(".canvas-panel[data-panel]");
     var copies = document.querySelectorAll(".hero__body[data-copy]");
-
     tabs.addEventListener("click", function (e) {
       var btn = e.target.closest(".tab");
       if (!btn || !tabs.contains(btn)) return;
