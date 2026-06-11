@@ -1,323 +1,1659 @@
 /* =========================================================
    Micheal Sihavong — portfolio
-   Styling & branding inspired by cursor.com (light mode)
+   Theme: warm paper (#f7f7f3) + near-black ink (#26251e)
    ========================================================= */
 
 :root {
-  /* Surfaces */
-  --bg: #ffffff;
-  --bg-subtle: #f7f7f4;       /* warm off-white, Cursor section tint */
-  --bg-card: #ffffff;
-  --bg-card-hover: #fbfbfa;
+    --bg: #f7f7f3;
+    --ink: #26251e;
+    --ink-soft: oklab(0.263084 -0.00230259 0.0124794 / 0.6);
+    --ink-muted: #7a7973;
+    --ink-faint: rgba(38, 37, 30, 0.32);
+    --hairline: rgba(38, 37, 30, 0.14);
+    --shout-divider: rgba(38, 37, 30, 0.07);
+    --accent: #aaa0fa;
+    --accent-soft: rgba(170, 160, 250, 0.16);
+    --radius: 14px;
 
-  /* Text */
-  --text: #141414;            /* near-black, Cursor primary */
-  --text-muted: #6b6b6b;
-  --text-faint: #a4a4a4;
-
-  /* Lines */
-  --border: #e4e4e4;
-  --border-strong: #d6d6dd;
-
-  /* Accent — Cursor purple */
-  --accent: #6049b3;
-  --accent-soft: #aaa0fa;
-  --accent-tint: #f1eefb;
-
-  /* Language / status dots */
-  --dot-ts: #3b82f6;
-  --dot-js: #f1c40f;
-  --dot-css: #db704b;
-  --dot-py: #1f8a65;
-
-  --radius-sm: 8px;
-  --radius: 12px;
-  --radius-lg: 18px;
-
-  --maxw: 980px;
-  --shadow-sm: 0 1px 2px rgba(20, 20, 20, 0.04);
-  --shadow-md: 0 6px 24px rgba(20, 20, 20, 0.06);
-
-  --font-sans: "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Helvetica, Arial, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo,
-    Consolas, monospace;
+    --surface-hover: #e6e5e1;
+    --shout-hover: #f2f1ed;
+    --shout-divider: rgba(38, 37, 30, 0.07);
+    --selection: #d8d8d3;
 }
 
-* { box-sizing: border-box; }
+[data-theme="dark"] {
+    --bg: #13120a;
+    --ink: #edecec;
+    --ink-soft: #999894;
+    --ink-muted: #9b9a90;
+    --ink-faint: rgba(237, 236, 236, 0.34);
+    --hairline: rgba(237, 236, 236, 0.14);
+    --accent-soft: rgba(170, 160, 250, 0.2);
 
-html { scroll-behavior: smooth; }
+    --surface-hover: rgba(237, 236, 236, 0.08);
+    --shout-hover: rgba(237, 236, 236, 0.05);
+    --shout-divider: rgba(237, 236, 236, 0.1);
+    --selection: #3a3a33;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+::selection {
+    background: var(--selection);
+    color: var(--ink);
+}
+
+::-moz-selection {
+    background: var(--selection);
+    color: var(--ink);
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
 
 body {
-  margin: 0;
-  background-color: var(--bg);
-  color: var(--text);
-  font-family: var(--font-sans);
-  font-size: 16px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
-a { color: inherit; text-decoration: none; }
-a:hover { color: var(--accent); }
-
-img { display: block; max-width: 100%; }
-
-/* ----------------------------------------------------------
-   Contribution-style banner (replaces GitHub's green grid,
-   recolored to Cursor's neutral/purple palette)
-   ---------------------------------------------------------- */
-.banner {
-  position: relative;
-  width: 100%;
-  height: 168px;
-  overflow: hidden;
-  border-bottom: 1px solid var(--border);
-  background: linear-gradient(180deg, var(--bg-subtle), var(--bg));
+/* ---------- Hero layout ---------- */
+.hero {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 40px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    align-items: center;
+    gap: 80px;
 }
 
-.banner__grid {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 14px);
-  grid-auto-rows: 14px;
-  gap: 5px;
-  padding: 16px;
-  justify-content: center;
-  align-content: start;
-  opacity: 0.9;
+.hero__panel {
+    min-width: 0;
+    align-self: start;
 }
 
-.banner__cell {
-  width: 14px;
-  height: 14px;
-  border-radius: 3px;
-  background: #ececec;
+.hero__panel--media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.banner::after {
-  /* fade the grid into the page */
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(255,255,255,0) 35%, var(--bg) 100%);
-  pointer-events: none;
+/* Left canvas: swaps content based on the active tab.
+   All panels are stacked in the same grid cell so the container always
+   reserves the height of the tallest panel (Intro) and never collapses
+   when switching to shorter tabs. */
+.hero__canvas {
+    position: relative;
+    min-width: 0;
+    display: grid;
+    /* Stretch to the full row height (driven by the taller right panel) so the
+       left canvas always matches the right canvas's height instead of being
+       vertically centered at its own content height. */
+    align-self: stretch;
+    /* Single stacked row that fills the canvas, so each panel (and its
+       height:100% children, e.g. the video feature) expands to the full height. */
+    grid-template-rows: minmax(0, 1fr);
 }
 
-/* ----------------------------------------------------------
-   Layout
-   ---------------------------------------------------------- */
-.wrap {
-  max-width: var(--maxw);
-  margin: 0 auto;
-  padding: 0 24px 96px;
+.hero__canvas > .canvas-panel {
+    grid-area: 1 / 1;
+    min-width: 0;
+    min-height: 0;
 }
 
-/* ----------------------------------------------------------
-   Profile header
-   ---------------------------------------------------------- */
+.canvas-panel[hidden] {
+    display: block;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.canvas-placeholder {
+    min-height: 360px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-align: center;
+    border: 1px dashed var(--hairline);
+    border-radius: var(--radius);
+}
+
+.canvas-placeholder h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.canvas-placeholder p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--ink-muted);
+}
+
+.intro-figure,
+.talks-figure {
+    min-height: 360px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* The intro art fills the full canvas height so the illustration's top and
+   bottom anchor to the same bounds as the right panel (avatar to socials). */
+.intro-art {
+    display: block;
+    height: 100%;
+    max-height: none;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+/* Tool-name bubble for the intro cubes. The cubes live inside the <object>'s
+   SVG document, where page ::after tooltips can't reach, so JS positions this
+   single floating chip over the hovered cube. Visuals match .project__icon's
+   tooltip so both tabs read as one system. */
+.intro-tip {
+    position: fixed;
+    padding: 4px 7px;
+    border-radius: 5px;
+    background: var(--bg);
+    color: var(--ink);
+    border: 1px solid var(--hairline);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.14);
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    letter-spacing: 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, calc(-100% - 4px));
+    transition: opacity 0.16s ease, transform 0.16s ease;
+    z-index: 40;
+}
+
+.intro-tip.is-visible {
+    opacity: 1;
+    transform: translate(-50%, calc(-100% - 7px));
+}
+
+.talks-art {
+    display: block;
+    width: 100%;
+    max-width: 420px;
+    max-height: 520px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* The avatar is dark monochrome line art baked into the SVG, so flip it to
+   light in dark mode so it doesn't vanish on the dark background. The intro
+   figure is NOT filtered: its theme flip happens inside the SVG itself (the
+   theme script toggles a .dark class on the <object>'s svg root), so the cube
+   hover/lit logo colors stay true to brand in dark mode. */
+[data-theme="dark"] .avatar {
+    filter: invert(0.9) hue-rotate(180deg);
+}
+
+/* Talks: the figure is extended to the left and right-aligned, so it fills
+   the full canvas width with the person anchored to the right edge. */
+.talks-figure {
+    justify-content: flex-end;
+}
+
+.talks-art {
+    max-width: 100%;
+    object-position: right center;
+}
+
+/* ---------- Talks: expandable blank cards ---------- */
+.talks-cards {
+    min-height: 360px;
+    height: 100%;
+    display: flex;
+    gap: 8px;
+}
+
+.project-card {
+    appearance: none;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    flex: 1 1 0;
+    min-width: 0;
+    cursor: pointer;
+    border-radius: var(--radius);
+    background: var(--card-color, #dcdbd5);
+    box-shadow: 0 1px 2px rgba(38, 37, 30, 0.05);
+    transition: flex-grow 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card.is-active {
+    flex-grow: 4.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .project-card {
+        transition: none;
+    }
+}
+
+/* ---------- Talks: Netflix-style billboard + rail ----------
+   A full-bleed hero plays the featured talk's muted looping preview with the
+   title, meta line, description, and Play / More info actions overlaid on a
+   Netflix-billboard style. A "Watch more" thumbnail
+   rail below swaps the featured talk; the hero auto-rotates every few
+   seconds. */
+.talks-home {
+    width: 100%;
+    height: 100%;
+    min-height: 360px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+}
+
+/* Full canvas width at the video's native 16:9 — never crop the footage. */
+.billboard {
+    position: relative;
+    flex: none;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 5px;
+    overflow: hidden;
+    background: #141413;
+    cursor: pointer;
+}
+
+.billboard__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    /* Letterbox rather than crop if a video's aspect ever differs. */
+    object-fit: contain;
+    display: block;
+    background: #141413;
+    transition: opacity 0.3s ease;
+}
+
+.billboard.is-switching .billboard__video {
+    opacity: 0;
+}
+
+.billboard__content {
+    position: absolute;
+    left: clamp(18px, 4%, 44px);
+    right: 55%;
+    bottom: clamp(16px, 7%, 48px);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: clamp(8px, 1.2vw, 14px);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.billboard.is-switching .billboard__content {
+    opacity: 0;
+}
+
+.billboard__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: clamp(2px, 0.6vw, 8px);
+    pointer-events: auto;
+}
+
+/* Matches the nav tab pills (.tab.is-active): same shape, type, and shadow.
+   var(--ink)/var(--bg) flip automatically with the theme. */
+.bb-btn {
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    margin: 0;
+    border: 0;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.bb-btn svg {
+    width: 16px;
+    height: 16px;
+    flex: none;
+}
+
+/* White in both themes: the pill always sits on the darkened video. */
+.bb-btn--play {
+    background: #fff;
+    color: #141413;
+    box-shadow: 0 8px 24px rgba(38, 37, 30, 0.18);
+}
+
+.bb-btn--play svg {
+    fill: currentColor;
+}
+
+.bb-btn--play:hover {
+    background: #e6e5e1;
+}
+
+/* Netflix's "TV-14" chip: the talk's duration, pinned to the right edge.
+   Anchored to the same bottom as the Play button (the content column's
+   bottom), plus ~3px (half the height difference between the taller pill and
+   this chip) so the chip's center lines up with the Play button's center. */
+.billboard__rating {
+    position: absolute;
+    right: 0;
+    bottom: calc(clamp(16px, 7%, 48px) + 3px);
+    z-index: 1;
+    padding: 5px 16px 5px 10px;
+    border-left: 3px solid rgba(255, 255, 255, 0.75);
+    background: rgba(20, 20, 19, 0.55);
+    color: #fff;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 12px;
+    line-height: 1.4;
+    pointer-events: none;
+}
+
+/* ---- "Trending Now" thumbnail rail ---- */
+.talks-rail {
+    margin-top: clamp(7px, 1vw, 12px);
+    min-height: 0;
+}
+
+.talks-rail__title {
+    /* Same spacing below the heading as above the rail. */
+    margin: 0 0 clamp(7px, 1vw, 12px);
+    font-family: "Geist", "Inter", system-ui, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+}
+
+/* Tall poster row: cards share the full row width (no scrolling); the
+   featured card grows to fit its info panel and the rest split the rest. */
+.talks-rail__row {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    height: clamp(150px, 19vw, 240px);
+}
+
+/* The featured talk's card expands a dark info panel beside its thumbnail
+   (Netflix row style); the others sit collapsed as plain posters. */
+.rail-card {
+    appearance: none;
+    position: relative;
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    align-items: stretch;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #edece8;
+    border-radius: 5px;
+    overflow: hidden;
+    background: #f2f1ed;
+    cursor: pointer;
+    transition: flex-grow 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rail-card:focus,
+.rail-card:focus-visible,
+.bb-btn:focus,
+.bb-btn:focus-visible {
+    outline: none;
+}
+
+/* Hovering a poster previews it exactly like featuring it: the card expands
+   with its info panel while the featured card steps back to poster size. */
+.rail-card:hover {
+    flex-grow: 2.6;
+}
+
+.rail-card:hover .rail-card__panel {
+    width: clamp(170px, 20vw, 220px);
+}
+
+.rail-card.is-active {
+    flex-grow: 2.6;
+}
+
+[data-theme="dark"] .rail-card {
+    background: #1b1912;
+    border-color: #211e18;
+}
+
+.talks-rail__row:has(.rail-card:hover) .rail-card.is-active:not(:hover) {
+    flex-grow: 1;
+}
+
+.talks-rail__row:has(.rail-card:hover) .rail-card.is-active:not(:hover) .rail-card__panel {
+    width: 0;
+}
+
+/* The artwork is inset from the card edges so the card background frames it
+   (Cursor-style), with its own slight rounding. */
+.rail-card__media-box {
+    position: relative;
+    flex: 1 1 0;
+    min-width: 0;
+    margin: 4px;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.rail-card__media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Info panel: zero-width until the card is featured. */
+.rail-card__panel {
+    flex: none;
+    width: 0;
+    overflow: hidden;
+    transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rail-card.is-active .rail-card__panel {
+    width: clamp(170px, 20vw, 220px);
+}
+
+/* Fixed-width inner block so the text doesn't reflow mid-animation. */
+.rail-card__panel-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
+    box-sizing: border-box;
+    width: clamp(170px, 20vw, 220px);
+    height: 100%;
+    padding: 12px;
+    text-align: left;
+}
+
+.rail-card__panel-body {
+    display: block;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* Title + description mirror the Projects cards (.project__title /
+   .shout__quote): same sizes, weights, and colors. */
+.rail-card__panel-title {
+    display: block;
+    margin: 0 0 8px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+}
+
+.rail-card__panel-date {
+    display: block;
+    margin: 0 0 4px;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    color: var(--ink-muted);
+}
+
+.rail-card__panel-desc {
+    color: var(--ink-soft);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.rail-card__panel-duration {
+    display: block;
+    margin-top: 8px;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    color: var(--ink-muted);
+}
+
+/* "Watch now" footer: same chrome as the Projects cards' "Read more". */
+.rail-card__panel-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.rail-card__panel-cta {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--ink-muted);
+}
+
+.rail-card__go {
+    flex: none;
+    width: 24px;
+    height: 24px;
+    color: var(--ink-muted);
+    display: grid;
+    place-items: center;
+    transition: color 0.22s ease, transform 0.22s ease;
+}
+
+.rail-card__go svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+}
+
+.rail-card.is-active:hover .rail-card__go {
+    color: var(--ink);
+    transform: translateX(2px);
+}
+
+.play-button {
+    position: relative;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #141413;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    outline: none;
+    transition: width 0.3s ease, border-radius 0.3s ease, background 0.3s ease;
+}
+
+.play-button:hover {
+    width: 156px;
+    border-radius: 26px;
+    background: rgba(20, 20, 19, 0.55);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+.play-button__icon {
+    position: absolute;
+    left: 6px;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    box-sizing: border-box;
+    background: #141413;
+    border-radius: 50%;
+    fill: #fff;
+    z-index: 2;
+}
+
+.play-button::after {
+    content: "Watch demo";
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    position: absolute;
+    left: 56px;
+    top: 38%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    line-height: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.play-button::before {
+    content: attr(data-duration);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 10px;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    position: absolute;
+    left: 56px;
+    top: 42%;
+    transform: translateY(9px);
+    white-space: nowrap;
+    line-height: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.play-button:hover::after,
+.play-button:hover::before {
+    opacity: 1;
+}
+
+/* Always-expanded CTA: the pill stays open with the label + duration visible,
+   instead of expanding only on hover. */
+.play-button--static {
+    width: 156px;
+    border-radius: 26px;
+    background: #141413;
+}
+
+.play-button--static::after,
+.play-button--static::before {
+    opacity: 1;
+}
+
+.play-button--static:hover {
+    width: 156px;
+    border-radius: 26px;
+    background: #26251e;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+/* On the dark canvas a near-black pill disappears, so flip it to a light pill
+   with dark icon + label. */
+[data-theme="dark"] .play-button--static {
+    background: #edecec;
+}
+
+[data-theme="dark"] .play-button--static:hover {
+    background: #d6d5d3;
+}
+
+[data-theme="dark"] .play-button--static .play-button__icon {
+    background: #edecec;
+    fill: #141413;
+}
+
+[data-theme="dark"] .play-button--static::after {
+    color: #141413;
+}
+
+[data-theme="dark"] .play-button--static::before {
+    color: rgba(20, 19, 14, 0.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .billboard__video,
+    .billboard__content,
+    .rail-card,
+    .rail-card__panel {
+        transition: none;
+    }
+}
+
+@media (max-width: 560px) {
+    .billboard {
+        aspect-ratio: 4 / 3;
+    }
+
+    .billboard__content {
+        right: 8%;
+    }
+
+    .billboard__rating {
+        display: none;
+    }
+}
+
+/* ---------- Video modal ---------- */
+.video-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(20, 19, 14, 0.82);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.video-modal.is-open {
+    display: flex;
+    opacity: 1;
+}
+
+.video-modal__content {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    aspect-ratio: 16 / 9;
+}
+
+.video-modal__close {
+    position: absolute;
+    top: -42px;
+    right: 0;
+    display: inline-flex;
+    padding: 8px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.video-modal__close:hover {
+    transform: scale(1.1);
+}
+
+.video-modal__close svg {
+    width: 24px;
+    height: 24px;
+}
+
+.video-modal__container {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.video-modal__container video {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* ---------- Shouts: testimonial grid ----------
+   A clean divider grid of referral cards (company logo, quote, then the person
+   with an arrow affordance). Cards share the paper background; the only
+   structure is the 1px hairline gap painted by the grid background. Columns
+   auto-fit to the available canvas width. */
+.shouts-grid {
+    min-height: 300px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    /* Equal-height rows: split the grid's height evenly so a long quote in one
+       row doesn't make that whole row taller than the others. */
+    grid-auto-rows: 1fr;
+    gap: 1px;
+    /* Lighter than the global --hairline so the cell dividers read as a faint
+       grid rather than hard lines. */
+    background: var(--shout-divider);
+}
+
+.shout {
+    position: relative;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 16px 20px;
+    background: var(--bg);
+    color: var(--ink);
+    overflow: hidden;
+    /* Match the body's theme transition (0.3s) so the cells fade in lockstep
+       with the page; a mismatched duration makes the cell-tiled canvas finish
+       first and flash as a rectangle when toggling light/dark. */
+    transition: background 0.3s ease;
+}
+
+.shout:hover {
+    background: var(--shout-hover);
+}
+
+/* Company logo / brand mark, top of each card.
+   Each logo gets its own --logo-h so they optically match: bounding-box height
+   alone isn't enough because a single-line wordmark (Meta) reads much larger
+   than a stacked block (Richey May) or a busy lockup (UC Boulder) at the same
+   pixel height. The band reserves a consistent vertical slot and centers each
+   mark within it. */
+.shout__logo {
+    display: flex;
+    align-items: center;
+    height: 26px;
+    margin-bottom: 50px;
+}
+
+.shout__logo img,
+.shout__logo svg {
+    height: var(--logo-h, 22px);
+    max-width: 165px;
+    width: auto;
+    object-fit: contain;
+    object-position: left center;
+    /* Flatten brand colors to a single muted-ink tone so logos blend with the
+       grayscale aesthetic (matches the desaturated avatars). */
+    filter: grayscale(1) brightness(0) opacity(0.82);
+}
+
+/* Per-logo optical sizing. Wordmarks that fill their height get a smaller
+   value; stacked / lockup marks get more so they don't read as tiny. */
+.shout__logo--richeymay { --logo-h: 22.8px; }
+.shout__logo--ucboulder { --logo-h: 22.8px; }
+.shout__logo--meta      { --logo-h: 14.25px; }
+.shout__logo--oracle    { --logo-h: 11px; }
+.shout__logo--deloitte  { --logo-h: 12.5px; }
+.shout__logo--samsara   { --logo-h: 19px; }
+
+/* In dark mode the flattened-to-black logos would vanish, so invert them to a
+   muted off-white that matches the desaturated aesthetic. */
+[data-theme="dark"] .shout__logo img,
+[data-theme="dark"] .shout__logo svg {
+    filter: grayscale(1) brightness(0) invert(1) opacity(0.78);
+}
+
+/* UC Boulder is an inline two-tone SVG so it can recolor per theme instead of
+   being crushed by the brightness(0) flatten: the mark and wordmark use
+   currentColor (ink), while the interlocking shield knockouts use the page
+   background, keeping the CU legible in both light and dark mode. */
+.shout__logo--ucboulder svg {
+    filter: none;
+    fill: currentColor;
+    color: var(--ink);
+    opacity: 0.85;
+}
+
+.shout__logo--ucboulder .ucb-knockout {
+    fill: var(--bg);
+}
+
+[data-theme="dark"] .shout__logo--ucboulder svg {
+    filter: none;
+}
+
+.shout__quote {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+}
+
+/* Footer pinned to the bottom: person (avatar + name/role) on the left,
+   arrow affordance on the right. */
+.shout__foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: 20px;
+}
+
+.shout__person {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.shout__avatar {
+    flex: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    filter: grayscale(1);
+    background: rgba(38, 37, 30, 0.12);
+}
+
+.shout__id {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+/* Keep the identity block to two lines (name + role), each truncated with an
+   ellipsis so it never wraps onto a third line in a narrow column. */
+.shout__name {
+    font-weight: 400;
+    font-size: 12px;
+    color: var(--ink-soft);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.shout__role {
+    font-size: 11px;
+    color: var(--ink-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Arrow affordance: bare arrow (no circle), muted gray at rest.
+   Darkens to full ink and nudges right on card hover. */
+.shout__go {
+    flex: none;
+    width: 24px;
+    height: 24px;
+    color: var(--ink-muted);
+    display: grid;
+    place-items: center;
+    transition: color 0.22s ease, transform 0.22s ease;
+}
+
+.shout__go svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+}
+
+.shout:hover .shout__go {
+    color: var(--ink);
+    transform: translateX(2px);
+}
+
+/* Stretched link: the whole card is clickable. */
+.shout__link {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .shout,
+    .shout__go {
+        transition: none;
+    }
+}
+
+/* ---------- Projects: cards on the shout chrome ----------
+   Project cards reuse the shout cell (divider grid, hover, pinned footer,
+   arrow) but lead with a product icon row, a bold title, and a description,
+   then a "Watch demo" CTA in the footer. */
+.project__icons {
+    --logo-h: 18px;
+    gap: 0;
+    margin-bottom: 28px;
+}
+
+/* Product icons are "stitched" edge-to-edge into one continuous strip (no
+   breathing room between marks), with a hairline overlap so adjacent square
+   glyphs read as a single lockup rather than a spaced row. Unlike the shout
+   logos these keep their brand colors: full-color marks stay legible when
+   touching, where flattened-to-ink silhouettes would merge into one blob. */
+.project__icons img,
+[data-theme="dark"] .project__icons img {
+    flex: none;
+    filter: none;
+    display: block;
+}
+
+/* Each mark is wrapped so it can carry a hover tooltip. The strip is lifted
+   above the stretched card link (z-index 2) so the icons actually receive the
+   hover; the rest of the card stays the clickable target. */
+.project__icons {
+    position: relative;
+    z-index: 3;
+}
+
+.project__icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    flex: none;
+}
+
+.project__icon + .project__icon {
+    margin-left: -1px;
+}
+
+/* Some marks are sparse (triangle, diamond, thin line-art) so their SVG boxes
+   carry optical whitespace that reads as a gap even when the boxes touch. Pull
+   these in past the default -1px so they stitch as tightly as the solid marks. */
+.project__icon[data-tip="Vercel"] {
+    margin-left: -6px;
+}
+
+.project__icon[data-tip="MCP"] {
+    margin-left: -6px;
+}
+
+.project__icon[data-tip="Jira"] {
+    margin-left: -5px;
+}
+
+/* Tool-name bubble that floats above the icon on hover. Uses the page
+   background so it reads as a raised chip, lifted off the card with a hairline
+   border + soft shadow rather than an inverted fill. */
+.project__icon::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: calc(100% + 7px);
+    left: 50%;
+    transform: translateX(-50%) translateY(3px);
+    padding: 4px 7px;
+    border-radius: 5px;
+    background: var(--bg);
+    color: var(--ink);
+    border: 1px solid var(--hairline);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.14);
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    letter-spacing: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.16s ease, transform 0.16s ease;
+    z-index: 4;
+}
+
+.project__icon:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* NetSuite's navy mark sinks into the dark background, so lift it there. */
+[data-theme="dark"] .project__icons img[alt="NetSuite"] {
+    filter: brightness(2.1) saturate(0.85);
+}
+
+/* Next.js, Vercel, MCP, and Brex are solid-black marks that vanish on the dark
+   canvas, so invert them to their white-on-dark variants there. */
+[data-theme="dark"] .project__icons img[alt="Next.js"],
+[data-theme="dark"] .project__icons img[alt="Vercel"],
+[data-theme="dark"] .project__icons img[alt="MCP"],
+[data-theme="dark"] .project__icons img[alt="Brex"] {
+    filter: invert(1);
+}
+
+/* Coming-soon cards: desaturate the tool logos to reinforce the muted,
+   not-yet-live treatment. Greyscale (rather than flatten-to-ink) keeps the
+   stitched marks distinguishable by their luminance. */
+.project--placeholder .project__icons img {
+    filter: grayscale(1) opacity(0.85);
+}
+
+/* In dark mode greyscale alone leaves the darker marks (e.g. NetSuite navy)
+   sunk into the background, so lift their brightness while staying desaturated. */
+[data-theme="dark"] .project--placeholder .project__icons img {
+    filter: grayscale(1) brightness(1.7) opacity(0.85);
+}
+
+.project__title {
+    margin: 0 0 8px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+}
+
+.project__cta {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--ink-muted);
+}
+
+.project .shout__quote {
+    color: var(--ink-soft);
+}
+
+/* Cards without a destination link yet read "Coming soon": italicize the label
+   and drop the arrow affordance since there's nothing to open. When a link is
+   added to the card, it automatically reverts to the standard "Read more" look. */
+.project:not(:has(.shout__link)) .project__cta {
+    font-style: italic;
+}
+
+/* Keep the arrow's box (visibility, not display) so the footer height matches
+   the "Read more" cards and the "Coming soon" label stays vertically aligned. */
+.project:not(:has(.shout__link)) .shout__go {
+    visibility: hidden;
+}
+
+/* The base .shout cell clips with overflow:hidden, which would cut off the
+   icon tooltips that float above the card. Project cards don't rely on that
+   clip, so let their content (the tooltips) escape the cell. */
+.project {
+    overflow: visible;
+}
+
+/* Placeholder cards: live content reserved, so dim the chrome and skip the
+   hover/arrow affordance since there's nothing to open yet. */
+.project--placeholder {
+    cursor: default;
+}
+
+.project--placeholder .project__title,
+.project--placeholder .shout__quote {
+    opacity: 0.55;
+}
+
+.project--placeholder .project__cta {
+    opacity: 0.55;
+    font-style: italic;
+}
+
+.project--placeholder .shout__go {
+    display: none;
+}
+
+/* The full-card link on project cards reuses .play-button purely as the JS hook
+   that opens the demo modal. Strip its visual chrome (the dark circle and the
+   "Watch demo" pill that expands on hover) so it stays an invisible stretched
+   link instead of bleeding the talks-stage button styling onto the card. */
+.project .play-button,
+.project .play-button:hover {
+    position: absolute;
+    inset: 0;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    background: none;
+    overflow: visible;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+.project .play-button::after,
+.project .play-button::before {
+    content: none;
+}
+
+/* The stretched full-card link is a <button> here (it opens the video modal),
+   so strip the native button chrome. */
+button.shout__link {
+    appearance: none;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+
+/* ---------- Profile: avatar + name + meta ---------- */
 .profile {
-  margin-top: -64px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
 }
 
-.profile__avatar {
-  width: 128px;
-  height: 128px;
-  border-radius: 999px;
-  border: 4px solid var(--bg);
-  background: var(--bg-subtle);
-  object-fit: cover;
-  box-shadow: var(--shadow-md);
+.avatar {
+    display: block;
+    width: 38px;
+    height: 62px;
+    flex: none;
+    object-fit: contain;
+    object-position: top center;
+    color: var(--ink);
 }
 
-.profile__id { display: flex; flex-direction: column; gap: 2px; }
+/* Real photo for search engines only — present in the HTML so Google can
+   discover and index it, but never rendered. */
+.avatar--photo {
+    display: none;
+}
+
+.profile__id {
+    min-width: 0;
+}
 
 .profile__name {
-  font-size: 30px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink);
 }
 
-.profile__handle {
-  font-size: 16px;
-  color: var(--text-faint);
-}
-.profile__handle .joined { margin-left: 12px; font-size: 14px; }
-
-.profile__bio {
-  font-size: 17px;
-  color: var(--text);
-  max-width: 620px;
-  margin: 4px 0 2px;
+.profile__title {
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--ink-soft);
 }
 
-.meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 20px;
-  font-size: 14px;
-  color: var(--text-muted);
-}
-.meta a:hover { color: var(--accent); }
-.meta__item { display: inline-flex; align-items: center; gap: 7px; }
-.meta__item svg { width: 16px; height: 16px; color: var(--text-faint); flex: none; }
-
-.stats {
-  display: flex;
-  gap: 18px;
-  font-size: 14px;
-  color: var(--text-muted);
-  margin-top: 2px;
-}
-.stats b { color: var(--text); font-weight: 600; }
-.stats a:hover b { color: var(--accent); }
-
-/* ----------------------------------------------------------
-   Section headings
-   ---------------------------------------------------------- */
-.section { margin-top: 44px; }
-
-.section__head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-bottom: 16px;
-}
-.section__title {
-  font-size: 14px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--text-muted);
-  margin: 0;
-}
-.section__count {
-  font-size: 13px;
-  color: var(--text-faint);
+.profile__company {
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--ink-soft);
 }
 
-/* ----------------------------------------------------------
-   Pinned project cards
-   ---------------------------------------------------------- */
-.pinned {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+/* ---------- Tabs / buttons ---------- */
+.tabs {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    /* pull left by the tab's horizontal padding so the text/icon
+       left edge aligns with the avatar and description */
+    margin: 24px 0 24px -16px;
 }
 
-.card {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--bg-card);
-  padding: 18px 18px 16px;
-  transition: border-color 0.18s ease, box-shadow 0.18s ease,
-    transform 0.18s ease, background 0.18s ease;
-}
-.card:hover {
-  border-color: var(--border-strong);
-  background: var(--bg-card-hover);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
-}
-
-.card__top { display: flex; align-items: center; gap: 9px; }
-.card__icon {
-  width: 16px; height: 16px; color: var(--text-faint); flex: none;
-}
-.card__name {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--accent);
-}
-.card:hover .card__name { text-decoration: underline; }
-.card__badge {
-  margin-left: auto;
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--text-muted);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 1px 8px;
+.tab {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--ink-faint);
+    transition: color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+    user-select: none;
 }
 
-.card__desc {
-  font-size: 13.5px;
-  color: var(--text-muted);
-  line-height: 1.55;
-  margin: 12px 0 16px;
-  flex: 1;
+.tab:hover {
+    color: var(--ink-soft);
 }
 
-.card__foot {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  font-size: 12.5px;
-  color: var(--text-muted);
+.tab__icon {
+    width: 0;
+    height: 16px;
+    flex: none;
+    opacity: 0;
+    margin-right: 0;
+    transform: scale(0.6);
+    transform-origin: center left;
+    overflow: hidden;
+    transition: width 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.22s ease,
+                margin-right 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-.lang { display: inline-flex; align-items: center; gap: 6px; }
-.dot { width: 11px; height: 11px; border-radius: 999px; display: inline-block; }
-.card__foot .meta__item svg { width: 14px; height: 14px; }
 
-/* ----------------------------------------------------------
-   Recent activity
-   ---------------------------------------------------------- */
-.activity {
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  overflow: hidden;
+.tab.is-active .tab__icon {
+    width: 16px;
+    opacity: 1;
+    margin-right: 8px;
+    transform: scale(1);
 }
-.activity__row {
-  display: flex;
-  gap: 14px;
-  padding: 16px 18px;
-  border-top: 1px solid var(--border);
-}
-.activity__row:first-child { border-top: none; }
-.activity__icon {
-  width: 30px; height: 30px; flex: none;
-  display: grid; place-items: center;
-  border-radius: 999px;
-  background: var(--accent-tint);
-  color: var(--accent);
-}
-.activity__icon svg { width: 16px; height: 16px; }
-.activity__body { display: flex; flex-direction: column; gap: 2px; }
-.activity__text { font-size: 14px; }
-.activity__text b { font-weight: 600; }
-.activity__time { font-size: 12.5px; color: var(--text-faint); }
 
-/* ----------------------------------------------------------
-   Footer
-   ---------------------------------------------------------- */
-.footer {
-  margin-top: 56px;
-  padding-top: 24px;
-  border-top: 1px solid var(--border);
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 18px;
-  align-items: center;
-  font-size: 13px;
-  color: var(--text-faint);
+.tab.is-active {
+    background: var(--ink);
+    color: var(--bg);
+    box-shadow: 0 8px 24px rgba(38, 37, 30, 0.18);
 }
-.footer a:hover { color: var(--accent); }
-.footer__sep { color: var(--border-strong); }
 
-/* ----------------------------------------------------------
-   Responsive
-   ---------------------------------------------------------- */
-@media (max-width: 720px) {
-  .pinned { grid-template-columns: 1fr; }
-  .profile__avatar { width: 104px; height: 104px; }
-  .profile__name { font-size: 26px; }
-  .banner { height: 130px; }
+.tab.is-active:hover {
+    color: var(--bg);
+}
+
+/* ---------- Copy ---------- */
+.hero__copy {
+    max-width: 460px;
+}
+
+.hero__headline {
+    margin: 0 0 16px;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+}
+
+/* Stack all body copies in the same grid cell so the container always
+   reserves the height of the tallest copy (Intro). This keeps the socials
+   anchored to the same spot regardless of the active tab. */
+.hero__bodies {
+    display: grid;
+}
+
+.hero__body {
+    grid-area: 1 / 1;
+    margin: 0;
+    padding-top: 10px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink);
+}
+
+.hero__body[hidden] {
+    display: block;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.hero__body p {
+    margin: 0;
+}
+
+.hero__body p + p {
+    margin-top: 0.9em;
+}
+
+.hero__link {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: opacity 0.18s ease;
+}
+
+.hero__link:hover {
+    opacity: 0.7;
+}
+
+/* Workflow phrases in the hero copy: styled like links and, on hover, light
+   up the matching logo blocks in the intro illustration. */
+.flow-link {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    cursor: pointer;
+    transition: opacity 0.18s ease;
+}
+
+.flow-link:hover {
+    opacity: 0.7;
+}
+
+/* Footer row: social icons on the left, theme toggle right-aligned. */
+.hero__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+/* On desktop, stretch the right panel to the full row height and pin the
+   footer to the bottom edge so it mirrors the profile block at the top. */
+@media (min-width: 981px) {
+    .hero__panel {
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .hero__copy {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .hero__footer {
+        margin-top: auto;
+        padding-top: 24px;
+    }
+}
+
+.hero__socials {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    /* Pull left by the first icon's internal centering inset ((26 - 17) / 2)
+       so the GitHub icon's left edge aligns with the hero body text above. */
+    margin: 0 0 0 -4.5px;
+    padding: 0;
+    list-style: none;
+}
+
+/* ---------- Theme toggle (single icon action) ---------- */
+.theme-toggle {
+    appearance: none;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    flex: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--ink-muted);
+    transition: color 0.18s ease, background 0.18s ease;
+}
+
+.theme-toggle:hover {
+    color: var(--ink);
+    background: var(--surface-hover);
+}
+
+.theme-toggle__icon {
+    width: 15px;
+    height: 15px;
+    display: block;
+}
+
+/* Light mode shows the moon (action: go dark); dark mode shows the sun. */
+.theme-toggle__icon--sun {
+    display: none;
+}
+
+[data-theme="dark"] .theme-toggle__icon--sun {
+    display: block;
+}
+
+[data-theme="dark"] .theme-toggle__icon--moon {
+    display: none;
+}
+
+.social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    color: var(--ink-muted);
+    background: transparent;
+    transition: color 0.18s ease, background 0.18s ease;
+}
+
+.social:hover {
+    color: var(--ink);
+    background: var(--surface-hover);
+}
+
+.social svg {
+    display: block;
+}
+
+/* ---------- Wave-line portrait ---------- */
+.portrait {
+    margin: 0;
+    width: 100%;
+    max-width: 400px;
+}
+
+.portrait__canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+}
+
+.portrait__caption {
+    margin-top: 10px;
+    padding: 0 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 12px;
+    letter-spacing: -0.01em;
+}
+
+.portrait__caption a {
+    color: var(--ink);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.portrait__caption a:hover {
+    border-bottom-color: currentColor;
+}
+
+.portrait__caption span {
+    color: var(--ink-muted);
+    text-align: right;
+}
+
+/* ---------- Merge-style integration diagram ---------- */
+.merge {
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(230px, 300px);
+    align-items: center;
+    gap: 32px;
+}
+
+.merge__links {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: visible;
+    z-index: 1;
+}
+
+.merge__cats {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.merge-cat {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.merge-cat__box {
+    flex: none;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+    padding: 11px 16px;
+    border: 1px solid #edece8;
+    border-radius: 16px;
+    background: #f2f1ed;
+    box-shadow: 0 1px 2px rgba(38, 37, 30, 0.04);
+}
+
+.brand {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    opacity: 0.62;
+    transition: opacity 0.15s ease;
+}
+
+.merge-cat:hover .brand {
+    opacity: 0.85;
+}
+
+.merge-cat__label {
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink-muted);
+    white-space: nowrap;
+}
+
+.merge__hub {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 980px) {
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 40px 24px;
+    }
+
+    .hero__panel {
+        order: -1;
+    }
+
+    .merge {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .merge__links {
+        display: none;
+    }
+
+    .merge__cats {
+        align-items: center;
+    }
+
+    .merge__hub {
+        order: -1;
+    }
+}
+
+@media (max-width: 820px) {
+    .tabs {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .tab {
+        font-size: 15px;
+    }
+
+    .portrait {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 560px) {
+    /* Single-column stack on small screens. */
+    .shouts-grid {
+        grid-template-columns: 1fr;
+    }
 }

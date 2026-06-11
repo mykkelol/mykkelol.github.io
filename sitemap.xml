@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://msihavong.com/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://msihavong.com/assets/images/micheal.png</image:loc>
+      <image:title>Micheal Sihavong — Finance Systems Engineer and Business Systems Architect</image:title>
+      <image:caption>Micheal Sihavong, Finance Systems Engineer and Business Systems Architect in San Francisco</image:caption>
+    </image:image>
+  </url>
+</urlset>

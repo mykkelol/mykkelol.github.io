@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Keep legacy project pages out of search so they don't compete with the homepage
+Disallow: /projects/
+
+Sitemap: https://msihavong.com/sitemap.xml
