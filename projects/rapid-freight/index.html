@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rapid Freight Inc.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Top bar: logo + language switcher -->
+    <header class="topbar">
+      <div class="logo">
+        <span class="logo-mark" aria-hidden="true">
+          <svg class="logo-mark-svg" viewBox="0 0 34 34" width="34" height="34">
+            <defs>
+              <mask id="rf-cut">
+                <rect width="34" height="34" fill="#fff" />
+                <text x="17" y="18" text-anchor="middle" dominant-baseline="central" font-family="Inter, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="-0.5" fill="#000">RF</text>
+              </mask>
+            </defs>
+            <circle cx="17" cy="17" r="17" fill="#fff" mask="url(#rf-cut)" />
+          </svg>
+        </span>
+        <span class="logo-text">
+          <span class="logo-name" data-i18n="brand">Rapid Freight Inc.</span>
+          <span class="logo-tag" data-i18n="brand_tag">GLOBAL FREIGHT LOGISTICS</span>
+        </span>
+      </div>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button class="lang-btn is-active" data-lang="en" type="button">English</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="zh" type="button">简体中文</button>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <video
+        class="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+      >
+        <source src="assets/hero.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 class="hero-title" data-i18n="hero_title">
+          Full-service freight logistics
+        </h1>
+        <ul class="hero-services">
+          <li data-i18n="hs1">Ocean Freight</li>
+          <li data-i18n="hs2">Air Freight</li>
+          <li data-i18n="hs3">Door-to-Door</li>
+          <li data-i18n="hs4">Warehousing</li>
+          <li data-i18n="hs5">Marine Insurance</li>
+          <li data-i18n="hs6">Export Packing</li>
+        </ul>
+        <div class="hero-actions">
+          <a class="hero-cta" href="#about">
+            <span data-i18n="hero_cta">Learn more</span>
+            <span class="cta-arrow" aria-hidden="true">&rsaquo;</span>
+          </a>
+          <button class="hero-cta hero-cta-solid" type="button" id="contactOpen" data-i18n="hero_contact">Contact us</button>
+        </div>
+      </div>
+      <div class="hero-creds">
+        <ul class="hero-creds-list">
+          <li class="hero-cred">
+            <span class="hero-cred-logobox">
+              <img class="hero-cred-logo" src="assets/wca-logo.png" alt="WCA World" />
+            </span>
+            <span class="hero-cred-sub">
+              <span class="hcred-l1" data-i18n="cred_wca_l1">WCA World</span>
+              <span class="hcred-l2" data-i18n="cred_wca_l2">Member since 1993</span>
+            </span>
+          </li>
+          <li class="hero-cred">
+            <span class="hero-cred-logobox">
+              <img class="hero-cred-logo hero-cred-seal" src="assets/fmc-seal.png" alt="Federal Maritime Commission" />
+            </span>
+            <span class="hero-cred-sub">
+              <span class="hcred-l1" data-i18n="cred_nvocc_l1">NVOCC</span>
+              <span class="hcred-l2" data-i18n="cred_nvocc_l2">License No. 14981N</span>
+            </span>
+          </li>
+          <li class="hero-cred">
+            <span class="hero-cred-logobox">
+              <img class="hero-cred-logo" src="assets/scac-logo.png" alt="SCAC Verified" />
+            </span>
+            <span class="hero-cred-sub">
+              <span class="hcred-l1" data-i18n="cred_scac_l1">SCAC</span>
+              <span class="hcred-l2" data-i18n="cred_scac_l2">License No. RPDF</span>
+            </span>
+          </li>
+        </ul>
+      </div>
+      <p class="hero-caption" data-i18n="hero_caption">
+        Serving global trade across 50+ ports for 30+ years since 1993
+      </p>
+    </section>
+
+    <!-- About -->
+    <main class="content" id="about">
+      <h2 class="section-title" data-i18n="about_heading">About Rapid Freight Inc.</h2>
+
+      <p data-i18n="about_p1">
+        Rapid Freight Inc. was established in 1993, filed as a NVOCC (License No.
+        14981N, SCAC No. RPDF). We are headquartered in Los Angeles, with CFS and
+        sales teams in every main sea/air port in the USA. We have exclusive
+        offices and partners in more than 50 ports/cities across China, Hong
+        Kong, Taiwan, Singapore, Vietnam and the Far East, making a global
+        network of agents throughout the world, ensuring complete logistical
+        support for all international cargo requirements.
+      </p>
+
+      <p data-i18n="about_p2">
+        Rapid Freight Inc. is more than a freight forwarder; we are a
+        full-service freight logistics company. We completely fulfill our
+        customers' needs, from international transportation and domestic freight
+        to warehousing and marine insurance, with the following specialties:
+      </p>
+
+      <ul class="services">
+        <li data-i18n="svc1">Ocean cargo export / import</li>
+        <li data-i18n="svc2">Air cargo export / import</li>
+        <li data-i18n="svc3">Full delivery services (DDU / DAP / DDP)</li>
+        <li data-i18n="svc4">Domestic rail, trucking, airfreight, door-to-door service</li>
+        <li data-i18n="svc5">Marine insurance agency</li>
+        <li data-i18n="svc6">Export packing and warehousing services</li>
+      </ul>
+
+      <div class="callout">
+        <p>
+          <strong data-i18n="special_cargo_label">Special cargo:</strong>
+          <span data-i18n="special_cargo_text">
+            Project, oversize, hazardous, break bulk, liquid cargo and charter
+            vessel. Also metal scraps, plastic scraps and waste paper.
+          </span>
+        </p>
+        <p>
+          <strong data-i18n="special_area_label">Special area:</strong>
+          <span data-i18n="special_area_text">
+            China, Hong Kong, Taiwan, Vietnam, Singapore, the Far East, South &amp;
+            Central America, and from anywhere in the world to China.
+          </span>
+        </p>
+      </div>
+
+      <p data-i18n="about_p3">
+        Rapid Freight also maintains long-term contract relationships with steam
+        lines, airlines, truckers, rails and other related industries. We are
+        like a customized program designed to fit your profile at competitive
+        rates.
+      </p>
+    </main>
+
+    <footer class="footer" id="contact">
+      <span data-i18n="footer">© 1993–2026 Rapid Freight Inc. · Los Angeles, USA</span>
+    </footer>
+
+    <!-- Contact modal -->
+    <div class="modal-overlay" id="contactModal" aria-hidden="true">
+      <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="contactTitle"
+      >
+        <button class="modal-close" type="button" id="modalClose" aria-label="Close">
+          &times;
+        </button>
+
+        <h2 class="modal-title" id="contactTitle" data-i18n="contact_title">
+          Contact us
+        </h2>
+        <p class="modal-sub" data-i18n="contact_subtitle">
+          Tell us about your shipment and we'll get back to you shortly.
+        </p>
+
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="cf-first">
+                <span data-i18n="form_first">First name</span>
+                <span class="req" aria-hidden="true">*</span>
+              </label>
+              <input id="cf-first" name="firstName" type="text" required />
+            </div>
+            <div class="form-field">
+              <label for="cf-last">
+                <span data-i18n="form_last">Last name</span>
+                <span class="req" aria-hidden="true">*</span>
+              </label>
+              <input id="cf-last" name="lastName" type="text" required />
+            </div>
+            <div class="form-field">
+              <label for="cf-email">
+                <span data-i18n="form_email">Email</span>
+                <span class="req" aria-hidden="true">*</span>
+              </label>
+              <input id="cf-email" name="email" type="email" required />
+            </div>
+            <div class="form-field">
+              <label for="cf-phone">
+                <span data-i18n="form_phone">Phone number</span>
+                <span class="req" aria-hidden="true">*</span>
+              </label>
+              <input id="cf-phone" name="phone" type="tel" required />
+            </div>
+          </div>
+
+          <fieldset class="form-field services-field">
+            <legend>
+              <span data-i18n="form_services">Services</span>
+              <span class="req" aria-hidden="true">*</span>
+              <span class="field-hint" data-i18n="form_services_hint">
+                (select all that apply)
+              </span>
+            </legend>
+            <div class="checkbox-grid">
+              <label class="checkbox">
+                <input type="checkbox" name="services" value="Ocean Freight" />
+                <span data-i18n="hs1">Ocean Freight</span>
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" name="services" value="Air Freight" />
+                <span data-i18n="hs2">Air Freight</span>
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" name="services" value="Door-to-Door" />
+                <span data-i18n="hs3">Door-to-Door</span>
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" name="services" value="Warehousing" />
+                <span data-i18n="hs4">Warehousing</span>
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" name="services" value="Marine Insurance" />
+                <span data-i18n="hs5">Marine Insurance</span>
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" name="services" value="Export Packing" />
+                <span data-i18n="hs6">Export Packing</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="form-field">
+            <label for="cf-details">
+              <span data-i18n="form_details">Any details</span>
+              <span class="field-hint" data-i18n="form_optional">(optional)</span>
+            </label>
+            <textarea id="cf-details" name="details" rows="3"></textarea>
+          </div>
+
+          <p class="form-error" id="formError" hidden></p>
+
+          <div class="form-actions">
+            <button class="btn-secondary" type="button" id="modalCancel" data-i18n="form_cancel">
+              Cancel
+            </button>
+            <button class="btn-primary" type="submit" data-i18n="form_submit">
+              Send message
+            </button>
+          </div>
+        </form>
+
+        <div class="form-success" id="formSuccess" hidden>
+          <div class="success-check" aria-hidden="true">&#10003;</div>
+          <p data-i18n="form_success">
+            Thank you! Your message has been received. We'll be in touch shortly.
+          </p>
+          <button class="btn-primary" type="button" id="successClose" data-i18n="form_close">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
